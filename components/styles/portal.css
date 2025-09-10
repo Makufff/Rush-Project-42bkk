@@ -1,0 +1,310 @@
+:root {
+    --bg1: #ffe9f3;
+    --bg2: #fff5fb;
+    --ink: #2b2730;
+    --sub: #6b6272;
+    --p1: #f9a8d4;
+    --p2: #eab1ff;
+    --p3: #c8f7f1;
+    --p4: #cbb9ff;
+    --p5: #ffd8e8;
+    --glass: rgba(255, 255, 255, .65);
+    --ring: rgba(0, 0, 0, .10)
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    color: var(--ink);
+    font-family: "LINE Seed Sans TH", "Noto Sans Thai", Inter, system-ui, Segoe UI, Arial;
+    background: radial-gradient(120% 140% at 80% 0%, #fff 0%, var(--bg2) 65%, #fde7f3 100%), linear-gradient(180deg, var(--bg1), var(--bg2));
+}
+
+.app {
+    display: grid;
+    place-items: center;
+    min-height: 100dvh;
+    padding: clamp(8px, 2vw, 24px)
+}
+
+.stage {
+    width: 100%;
+    max-width: 1100px;
+    aspect-ratio: 16/9;
+    position: relative;
+    overflow: hidden;
+    border-radius: clamp(16px, 2vw, 28px);
+    background: #000;
+    box-shadow: 0 30px 60px rgba(245, 168, 210, .35), 0 2px 0 1px rgba(255, 255, 255, .6) inset
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block
+}
+
+.badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: .45rem .8rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--p1), var(--p2));
+    color: #2b1220;
+    font-weight: 800;
+    font-size: .8rem;
+    letter-spacing: .06em
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: clamp(12px, 2vw, 22px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .35s ease
+}
+
+.overlay.show {
+    opacity: 1;
+    pointer-events: auto
+}
+
+#start {
+    background: linear-gradient(180deg, rgba(255, 255, 255, .0) 40%, rgba(255, 235, 245, .88) 100%)
+}
+
+.start-card {
+    width: min(560px, 92%);
+    text-align: center;
+    padding: clamp(18px, 3vw, 28px) clamp(16px, 3vw, 24px);
+    border-radius: clamp(16px, 2vw, 24px);
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--ring)
+}
+
+.h1 {
+    font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+    font-weight: 900;
+    letter-spacing: .02em;
+    margin: 0 0 .4rem
+}
+
+.h2 {
+    font-size: clamp(.95rem, 1.4vw, 1.05rem);
+    color: var(--sub);
+    margin: 0 0 1.1rem
+}
+
+.start-btn {
+    appearance: none;
+    border: 0;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 999px;
+    font-weight: 800;
+    padding: 1rem 1.4rem;
+    font-size: clamp(1rem, 1.2vw, 1.05rem);
+    background: linear-gradient(135deg, var(--p1), var(--p4));
+    color: #2b1220;
+    box-shadow: 0 10px 24px rgba(249, 168, 212, .45)
+}
+
+.start-btn:active {
+    transform: translateY(1px)
+}
+
+.float-hearts {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden
+}
+
+.float-hearts span {
+    position: absolute;
+    bottom: -10%;
+    width: 18px;
+    height: 18px;
+    background: var(--p5);
+    transform: rotate(45deg);
+    animation: rise 8s linear infinite;
+    opacity: .55;
+    filter: drop-shadow(0 6px 10px rgba(255, 105, 180, .25))
+}
+
+.float-hearts span::before,
+.float-hearts span::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: inherit;
+    border-radius: 50%
+}
+
+.float-hearts span::before {
+    left: -9px;
+    top: 0
+}
+
+.float-hearts span::after {
+    top: -9px;
+    left: 0
+}
+
+@keyframes rise {
+    to {
+        transform: translateY(-120vh) rotate(45deg)
+    }
+}
+
+#choice {
+    background: linear-gradient(180deg, rgba(0, 0, 0, .0) 20%, rgba(27, 18, 32, .55) 100%)
+}
+
+.box {
+    width: min(820px, 95%);
+    padding: 0;
+    border-radius: clamp(16px, 2vw, 22px);
+    overflow: hidden;
+    background: rgba(255, 255, 255, .85);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--ring);
+    margin-bottom: env(safe-area-inset-bottom, 0px)
+}
+
+.namebar {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .6rem .9rem;
+    background: linear-gradient(90deg, var(--p2), var(--p1));
+    color: #2b1220;
+    font-weight: 900
+}
+
+.namebar .heart {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    background: var(--p5);
+    transform: rotate(45deg);
+    border-radius: 2px
+}
+
+.namebar .heart::before,
+.namebar .heart::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--p5);
+    border-radius: 50%
+}
+
+.namebar .heart::before {
+    left: -6px;
+    top: 0
+}
+
+.namebar .heart::after {
+    left: 0;
+    top: -6px
+}
+
+.text {
+    padding: 1rem 1rem .6rem;
+    color: #402d45;
+    font-size: clamp(1rem, 1.1vw, 1.05rem)
+}
+
+.choices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .8rem;
+    padding: 0 1rem 1rem
+}
+
+.choice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .6rem;
+    text-decoration: none;
+    border-radius: 14px;
+    padding: 1rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--p3), #fff);
+    color: #18302d;
+    border: 1px solid rgba(0, 0, 0, .06);
+    min-height: 3.1rem
+}
+
+.choice:nth-child(2) {
+    background: linear-gradient(135deg, #fff, var(--p4));
+    color: #241d3a
+}
+
+.choice:focus-visible {
+    outline: 3px solid #0000;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, .2) inset, 0 0 0 3px #fff, 0 0 0 6px var(--p1)
+}
+
+.kbd {
+    font-size: .8rem;
+    padding: .1rem .45rem;
+    border-radius: .4rem;
+    background: #fff;
+    border: 1px solid var(--ring);
+    color: #444
+}
+
+.hint {
+    padding: 0 1rem 1rem;
+    color: #6a5e71;
+    font-size: .85rem
+}
+
+@media (max-width:520px) {
+    .choices {
+        grid-template-columns: 1fr
+    }
+    .kbd {
+        display: none
+    }
+}
+
+@media (max-aspect-ratio:3/4) {
+    .stage {
+        max-width: none;
+        height: calc(100dvh - max(16px, env(safe-area-inset-top)) - max(16px, env(safe-area-inset-bottom)));
+        aspect-ratio: auto
+    }
+    video {
+        object-fit: contain;
+        background: #000
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .overlay {
+        transition: none
+    }
+    .float-hearts {
+        display: none
+    }
+}

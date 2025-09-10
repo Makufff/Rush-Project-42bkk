@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Cutsense · Otome Style (Unskippable)</title>
+    <link rel="stylesheet" href="/components/styles/portal.css">
+</head>
+
+<body>
+    <div class="app">
+        <div class="stage" id="stage">
+            <div class="badge">Cutsense • Otome</div>
+            <video id="v" src="/assets/videos/Portal.mp4" playsinline></video>
+
+            <div id="start" class="overlay show">
+                <div class="start-card">
+                    <div class="h1">บทนำ</div>
+                    <div class="h2">แตะปุ่มเพื่อเริ่มชมคัตซีน แล้วเลือกเส้นทางของหัวใจ</div>
+                    <button id="startBtn" class="start-btn">เริ่มเรื่อง</button>
+                </div>
+                <div class="float-hearts" aria-hidden="true">
+                    <span style="left:8%;animation-delay:-0s;width:16px;height:16px"></span>
+                    <span style="left:18%;animation-delay:-2s"></span>
+                    <span style="left:28%;animation-delay:-1s"></span>
+                    <span style="left:40%;animation-delay:-3s;width:14px;height:14px"></span>
+                    <span style="left:52%;animation-delay:-4s"></span>
+                    <span style="left:63%;animation-delay:-1.5s"></span>
+                    <span style="left:74%;animation-delay:-2.5s"></span>
+                    <span style="left:86%;animation-delay:-.7s;width:14px;height:14px"></span>
+                </div>
+            </div>
+
+            <div id="choice" class="overlay">
+                <div class="box" role="dialog" aria-labelledby="dlgLabel" aria-modal="true">
+                    <div class="namebar">
+                        <div class="heart" aria-hidden="true"></div>
+                        <div id="dlgLabel">ตัวเลือก</div>
+                    </div>
+                    <div class="text">คืนนี้จะไปที่ไหนดีนะ?</div>
+                    <div class="choices">
+                        <a class="choice" id="goA" href="/tanapcha/index.html">ไปหา A <span class="kbd">tanapcha</span></a>
+                        <a class="choice" id="goB" href="/konpanch/index.html">ไปหา B <span class="kbd">konpanch</span></a>
+                    </div>
+                    <div class="hint">กดแป้นพิมพ์ <b>A</b> หรือ <b>B</b> เพื่อเลือกอย่างรวดเร็ว</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/components/scripts/Portal_Script.js"></script>
+</body>
+
+</html>
