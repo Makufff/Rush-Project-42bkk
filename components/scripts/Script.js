@@ -11,7 +11,7 @@ function spy() {
         const on = a.getAttribute('href') === '#' + current.id;
         a.classList.toggle('active', on);
         a.classList.toggle('activate', on);
-        a.setAttribute('aria-current', on ? 'page' : 'false');
+        a.setAttribute('aria-current', on?'page' : 'false');
     });
 }
 
@@ -37,7 +37,7 @@ navLinks.forEach(a => a.addEventListener('click', e => {
     const href = a.getAttribute('href');
     if (href && href.startsWith('#')) {
         e.preventDefault();
-        document.querySelector(href) ? .scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         activateByHash(href);
         history.replaceState(null, '', href);
     }
@@ -54,7 +54,7 @@ function addSpark() {
     s.style.left = (Math.random() * 92 + 4) + '%';
     s.style.bottom = '-10px';
     s.style.animationDuration = (6 + Math.random() * 6) + 's';
-    sparkles ? .appendChild(s);
+    sparkles?.appendChild(s);
     setTimeout(() => s.remove(), 12000);
 }
 for (let i = 0; i < 18; i++) setTimeout(addSpark, i * 300);
@@ -124,7 +124,7 @@ const likeBtn = $('#likeBtn'),
     igFrame = $('#igFrame');
 let likes = Number(localStorage.getItem('likes') || 5000),
     liked = localStorage.getItem('liked') === '1';
-const fmtNum = n => n >= 1e9 ? (n / 1e9).toFixed(1) + 'B' : n >= 1e6 ? (n / 1e6).toFixed(1) + 'M' : n >= 1e3 ? (n / 1e3).toFixed(1) + 'k' : String(n);
+const fmtNum = n => n >= 1e9?(n / 1e9).toFixed(1) + 'B' : n >= 1e6?(n / 1e6).toFixed(1) + 'M' : n >= 1e3?(n / 1e3).toFixed(1) + 'k' : String(n);
 
 function renderLikes() {
     likeCountEl.textContent = fmtNum(likes);
@@ -149,13 +149,13 @@ function toggleLike(e) {
     if (!liked) {
         liked = true;
         likes += 1;
-        floatHeart(e ? e.clientX - r.left : r.width / 2, e ? e.clientY - r.top : r.height / 2)
+        floatHeart(e?e.clientX - r.left : r.width / 2, e?e.clientY - r.top : r.height / 2)
     } else {
         liked = false;
         likes = Math.max(0, likes - 1)
     }
     localStorage.setItem('likes', likes);
-    localStorage.setItem('liked', liked ? '1' : '0');
+    localStorage.setItem('liked', liked?'1' : '0');
     renderLikes();
 }
 likeBtn.addEventListener('click', toggleLike);
@@ -223,26 +223,26 @@ revealEls.forEach(el => io.observe(el));
     const jina = url => `https://r.jina.ai/http://${url.replace(/^https?:\/\//,'')}`;
     const CANDIDATES = [rssJson(FEED_USER), rssJson(FEED_USER.replace(/^@/, '')), rssJson('@' + FEED_USER.replace(/^@/, ''))];
     const fmt = d => new Date(d).toLocaleDateString('en-US');
-    const trunc = (s, n = 200) => s && s.length > n ? s.slice(0, n - 1) + '…' : (s || '');
-    const clean = s => s ? s.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() : '';
+    const trunc = (s, n = 200) => s && s.length > n?s.slice(0, n - 1) + '…' : (s || '');
+    const clean = s => s?s.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() : '';
     const pickThumb = it => {
         const byField = it.thumbnail || (it.enclosure && it.enclosure.link);
         if (byField) return byField;
         const html = it.content || it.description || '';
         const m = /<img[^>]+src=["']([^"'>]+)["']/i.exec(html);
-        return m ? m[1] : '';
+        return m?m[1] : '';
     };
     const parseXml = (xmlText) => {
         const doc = new DOMParser().parseFromString(xmlText, 'text/xml');
         const channel = doc.querySelector('channel');
-        const title = channel ? .querySelector('title') ? .textContent || 'Medium Feed';
-        const link = channel ? .querySelector('link') ? .textContent || '#';
+        const title = channel?.querySelector('title')?.textContent || 'Medium Feed';
+        const link = channel?.querySelector('link')?.textContent || '#';
         const items = [...doc.querySelectorAll('item')].map(x => ({
-            title: x.querySelector('title') ? .textContent || 'Untitled',
-            link: x.querySelector('link') ? .textContent || '#',
-            pubDate: x.querySelector('pubDate') ? .textContent || '',
-            description: x.querySelector('description') ? .textContent || '',
-            content: x.querySelector('content\\:encoded') ? .textContent || ''
+            title: x.querySelector('title')?.textContent || 'Untitled',
+            link: x.querySelector('link')?.textContent || '#',
+            pubDate: x.querySelector('pubDate')?.textContent || '',
+            description: x.querySelector('description')?.textContent || '',
+            content: x.querySelector('content\\:encoded')?.textContent || ''
         }));
         return { feed: { title, link }, items };
     };
@@ -250,7 +250,7 @@ revealEls.forEach(el => io.observe(el));
         const feedEl = document.getElementById('feed');
         const headTitle = document.getElementById('feed-title');
         const headLink = document.getElementById('feed-link');
-        const tpl = document.getElementById('card-tpl') ? .content;
+        const tpl = document.getElementById('card-tpl')?.content;
         if (!feedEl || !tpl) return;
         try {
             let data = null;
@@ -271,7 +271,7 @@ revealEls.forEach(el => io.observe(el));
                             const r = await fetch(ao(u));
                             if (r.ok) {
                                 const j = await r.json();
-                                xml = j && j.contents ? j.contents : ''
+                                xml = j && j.contents?j.contents : ''
                             }
                         } catch {}
                         if (!xml) {
@@ -289,8 +289,8 @@ revealEls.forEach(el => io.observe(el));
                 }
             }
             if (!data) throw new Error('all attempts failed');
-            headTitle.textContent = data.feed ? .title || 'Medium Feed';
-            if (data.feed ? .link) {
+            headTitle.textContent = data.feed?.title || 'Medium Feed';
+            if (data.feed?.link) {
                 headLink.href = data.feed.link;
                 headLink.style.display = 'inline'
             }
