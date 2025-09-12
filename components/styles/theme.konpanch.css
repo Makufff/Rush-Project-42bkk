@@ -1,24 +1,23 @@
-:root{
-  --bg1:#ffe4f9;
-  --bg2:#e2ceff;
-  --ink:#0f172a;
-  --sub:#475569;
-  --p1:#a025ff;
-  --p2:#c06fff;
-  --p3:#e2bdff;
-  --glass:rgba(255,255,255,.18);
-  --ring:rgba(30,64,175,.25);
-  --shadow:0 24px 70px rgba(2,6,23,.18);
-  --r:22px;
-  --gblue:linear-gradient(90deg,var(--p3),var(--p1));
-  --gsoft:linear-gradient(90deg,#fff,#eaf2ff)
+:root {
+    --bg1: #ffe4f9;
+    --bg2: #e2ceff;
+    --ink: #0f172a;
+    --sub: #475569;
+    --p1: #a025ff;
+    --p2: #c06fff;
+    --p3: #e2bdff;
+    --glass: rgba(255, 255, 255, .18);
+    --ring: rgba(30, 64, 175, .25);
+    --shadow: 0 24px 70px rgba(2, 6, 23, .18);
+    --r: 22px;
+    --gblue: linear-gradient(90deg, var(--p3), var(--p1));
+    --gsoft: linear-gradient(90deg, #fff, #eaf2ff)
 }
-
 
 .stage {
     position: relative;
     border-radius: 28px;
     box-shadow: var(--shadow);
     overflow: hidden;
-    background: url('../../assets/images/konpanch_wallpaper.jpg') center/cover no-repeat fixed
+    background: url('../../assets/images/konpanch_wallpaper.png') center/cover no-repeat fixed
 }

@@ -1,17 +1,17 @@
-:root{
-  --bg1:#eef2ff;
-  --bg2:#f8fbff;
-  --ink:#0f172a;
-  --sub:#475569;
-  --p1:#2563eb;
-  --p2:#60a5fa;
-  --p3:#93c5fd;
-  --glass:rgba(255,255,255,.18);
-  --ring:rgba(30,64,175,.25);
-  --shadow:0 24px 70px rgba(2,6,23,.18);
-  --r:22px;
-  --gblue:linear-gradient(90deg,var(--p3),var(--p1));
-  --gsoft:linear-gradient(90deg,#fff,#eaf2ff)
+:root {
+    --bg1: #eef2ff;
+    --bg2: #f8fbff;
+    --ink: #0f172a;
+    --sub: #475569;
+    --p1: #2563eb;
+    --p2: #60a5fa;
+    --p3: #93c5fd;
+    --glass: rgba(255, 255, 255, .18);
+    --ring: rgba(30, 64, 175, .25);
+    --shadow: 0 24px 70px rgba(2, 6, 23, .18);
+    --r: 22px;
+    --gblue: linear-gradient(90deg, var(--p3), var(--p1));
+    --gsoft: linear-gradient(90deg, #fff, #eaf2ff)
 }
 
 .stage {
