@@ -79,14 +79,6 @@ body {
     padding-top: 110px
 }
 
-.stage {
-    position: relative;
-    border-radius: 28px;
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    background: url('assets/images/tanapcha_wallpaper.jpeg') center/cover no-repeat fixed
-}
-
 @media(max-width:900px) {
     .stage {
         background-attachment: scroll

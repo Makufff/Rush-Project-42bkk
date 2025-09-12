@@ -13,3 +13,11 @@
   --gblue:linear-gradient(90deg,var(--p3),var(--p1));
   --gsoft:linear-gradient(90deg,#fff,#eaf2ff)
 }
+
+.stage {
+    position: relative;
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    background: url('../../assets/images/tanapcha_wallpaper.jpeg') center/cover no-repeat fixed
+}
