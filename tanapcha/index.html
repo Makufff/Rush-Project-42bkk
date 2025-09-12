@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-         :root {
+        :root {
             --bg1: #eef2ff;
             --bg2: #f8fbff;
             --ink: #0f172a;
@@ -24,20 +24,20 @@
             --gblue: linear-gradient(90deg, var(--p3), var(--p1));
             --gsoft: linear-gradient(90deg, #fff, #eaf2ff)
         }
-        
+
         * {
             box-sizing: border-box
         }
-        
+
         html,
         body {
             height: 100%
         }
-        
+
         html {
             scroll-behavior: smooth
         }
-        
+
         body {
             margin: 0;
             font-family: Outfit, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -45,13 +45,13 @@
             background: linear-gradient(180deg, var(--bg1), var(--bg2) 60%) fixed;
             overflow-x: hidden
         }
-        
+
         .container {
             max-width: 1180px;
             margin: 0 auto;
             padding: 24px
         }
-        
+
         .nav {
             position: fixed;
             z-index: 40;
@@ -69,7 +69,7 @@
             border-radius: 999px;
             box-shadow: var(--shadow)
         }
-        
+
         .brand {
             font: 800 16px/1 Outfit;
             letter-spacing: .06em;
@@ -80,7 +80,7 @@
             background-clip: text;
             color: transparent
         }
-        
+
         .nav a {
             padding: 8px 12px;
             border-radius: 999px;
@@ -88,23 +88,23 @@
             color: #312b36;
             font-weight: 700
         }
-        
+
         .nav a:hover {
             background: rgba(255, 255, 255, .55)
         }
-        
+
         .nav a.active,
         .nav a.activate {
             background: var(--gsoft);
             box-shadow: 0 6px 24px rgba(249, 168, 212, .35)
         }
-        
+
         .nav-ctrls {
             display: flex;
             gap: 8px;
             margin-left: 8px
         }
-        
+
         .ctrl {
             border: 1px solid var(--ring);
             background: rgba(255, 255, 255, .55);
@@ -113,20 +113,20 @@
             cursor: pointer;
             box-shadow: 0 6px 18px rgba(2, 6, 23, .08)
         }
-        
+
         .ctrl:hover {
             transform: translateY(-1px)
         }
-        
+
         .ctrl.active {
             background: var(--gsoft)
         }
-        
+
         .hero {
             position: relative;
             padding-top: 110px
         }
-        
+
         .stage {
             position: relative;
             border-radius: 28px;
@@ -134,13 +134,13 @@
             overflow: hidden;
             background: url('../assets/images/tanapcha_wallpaper.jpeg') center/cover no-repeat fixed
         }
-        
+
         @media(max-width:900px) {
             .stage {
                 background-attachment: scroll
             }
         }
-        
+
         .stage::before {
             content: "";
             position: absolute;
@@ -148,15 +148,15 @@
             background: linear-gradient(to bottom, rgba(255, 255, 255, .08), rgba(0, 0, 0, .38));
             pointer-events: none
         }
-        
+
         .overlay-dark::before {
             background: linear-gradient(to bottom, rgba(255, 255, 255, .08), rgba(0, 0, 0, .38))
         }
-        
+
         .overlay-light::before {
             background: linear-gradient(to bottom, rgba(255, 255, 255, .6), rgba(255, 255, 255, .3))
         }
-        
+
         .stage::after {
             content: "";
             position: absolute;
@@ -165,64 +165,66 @@
             opacity: .9;
             pointer-events: none
         }
-        
+
         .hero .grid {
             display: grid;
             grid-template-columns: .9fr 1.1fr;
             gap: 18px;
             padding: 26px
         }
-        
+
         @media(max-width:980px) {
             .hero .grid {
                 grid-template-columns: 1fr
             }
         }
-        
+
         .floater {
             will-change: transform
         }
-        
+
         .float-y {
             animation: floatY 6s ease-in-out infinite alternate
         }
-        
+
         .float-tilt {
             animation: tilt 8s ease-in-out infinite alternate
         }
-        
+
         @keyframes floatY {
             0% {
                 transform: translateY(-6px)
             }
+
             100% {
                 transform: translateY(10px)
             }
         }
-        
+
         @keyframes tilt {
             0% {
                 transform: rotate(-3deg)
             }
+
             100% {
                 transform: rotate(3deg)
             }
         }
-        
+
         .glass {
             background: var(--glass);
             backdrop-filter: blur(12px) saturate(130%);
             -webkit-backdrop-filter: blur(12px) saturate(130%);
             border: 1px solid var(--ring)
         }
-        
+
         .card {
             border: 1px solid var(--ring);
             border-radius: 18px;
             background: #fff;
             box-shadow: 0 18px 40px rgba(2, 6, 23, .12)
         }
-        
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -236,15 +238,15 @@
             color: #0f172a;
             cursor: pointer
         }
-        
+
         .btn:hover {
             transform: translateY(-1px)
         }
-        
+
         .small {
             font-size: 12px
         }
-        
+
         .chip,
         .badge,
         .tag {
@@ -254,11 +256,11 @@
             background: #fff;
             font-weight: 700
         }
-        
+
         .chip.active {
             background: var(--gsoft)
         }
-        
+
         .ig {
             position: relative;
             width: min(520px, 100%);
@@ -267,7 +269,7 @@
             box-shadow: 0 16px 40px rgba(0, 0, 0, .14);
             transform-origin: 20% 50%
         }
-        
+
         .ig .frame {
             position: relative;
             aspect-ratio: 1/1;
@@ -275,14 +277,14 @@
             overflow: hidden;
             background: linear-gradient(135deg, #8ec5fc, #e0c3fc)
         }
-        
+
         .ig .frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block
         }
-        
+
         .ig .row {
             display: flex;
             justify-content: space-between;
@@ -290,12 +292,12 @@
             margin-top: 12px;
             color: #6b7280
         }
-        
+
         .ig .actions {
             display: flex;
             gap: 8px
         }
-        
+
         .ig .ig-btn {
             border: 1px solid var(--ring);
             background: #fff;
@@ -304,11 +306,11 @@
             cursor: pointer;
             box-shadow: 0 8px 20px rgba(2, 6, 23, .08)
         }
-        
+
         .ig .ig-btn:hover {
             transform: translateY(-1px)
         }
-        
+
         .ig .bubble {
             margin-top: 12px;
             display: inline-block;
@@ -319,13 +321,13 @@
             padding: 10px 14px;
             cursor: pointer
         }
-        
+
         .ig .stats {
             display: flex;
             gap: 12px;
             margin-top: 18px
         }
-        
+
         .stat {
             flex: 1;
             border: 1px solid rgba(0, 0, 0, .06);
@@ -334,12 +336,12 @@
             text-align: center;
             box-shadow: 0 12px 30px rgba(0, 0, 0, .08)
         }
-        
+
         .stat b {
             font-size: 20px;
             display: block
         }
-        
+
         .like {
             display: inline-flex;
             align-items: center;
@@ -353,32 +355,32 @@
             font-weight: 800;
             color: #334155
         }
-        
+
         .like:hover {
             transform: translateY(-1px)
         }
-        
+
         .heart-svg {
             width: 20px;
             height: 20px;
             display: block
         }
-        
+
         .heart-svg path {
             fill: none;
             stroke: #ef4444;
             stroke-width: 2
         }
-        
+
         .like.liked .heart-svg path {
             fill: #ef4444
         }
-        
+
         .like-count {
             min-width: 52px;
             text-align: left
         }
-        
+
         .float-heart {
             position: absolute;
             left: var(--x);
@@ -390,21 +392,23 @@
             animation: floatHeart 900ms ease-out forwards;
             pointer-events: none
         }
-        
+
         @keyframes floatHeart {
             0% {
                 opacity: 0;
                 transform: translate(-50%, -40%) scale(.6)
             }
+
             30% {
                 opacity: 1
             }
+
             100% {
                 opacity: 0;
                 transform: translate(-50%, -140%) scale(1.4)
             }
         }
-        
+
         .comments {
             margin-top: 12px;
             border: 1px solid rgba(0, 0, 0, .06);
@@ -414,11 +418,11 @@
             padding: 10px;
             display: none
         }
-        
+
         .comments.show {
             display: block
         }
-        
+
         .comments ul {
             list-style: none;
             margin: 0;
@@ -426,14 +430,14 @@
             max-height: 180px;
             overflow: auto
         }
-        
+
         .comments li {
             padding: 6px 2px;
             border-bottom: 1px dashed rgba(0, 0, 0, .06);
             font-size: 14px;
             color: #334155
         }
-        
+
         .comments input {
             margin-top: 8px;
             width: 100%;
@@ -442,14 +446,14 @@
             padding: 10px 12px;
             font: inherit
         }
-        
+
         .char {
             position: relative;
             border-radius: 26px;
             box-shadow: var(--shadow);
             overflow: hidden
         }
-        
+
         .char .img {
             height: 480px;
             border-radius: 22px;
@@ -458,18 +462,18 @@
             place-items: center;
             filter: drop-shadow(0 30px 40px rgba(0, 0, 0, .25))
         }
-        
+
         .char .img img {
             width: auto;
             height: 100%;
             object-fit: contain;
             display: block
         }
-        
+
         .liquid {
             position: relative
         }
-        
+
         .liquid::before,
         .liquid::after {
             content: "";
@@ -479,7 +483,7 @@
             opacity: .9;
             pointer-events: none
         }
-        
+
         .liquid::before {
             width: 180px;
             height: 180px;
@@ -488,7 +492,7 @@
             background: radial-gradient(circle at 30% 30%, rgba(37, 99, 235, .35), transparent 60%);
             animation: drift 12s ease-in-out infinite alternate
         }
-        
+
         .liquid::after {
             width: 220px;
             height: 220px;
@@ -497,31 +501,33 @@
             background: radial-gradient(circle at 70% 70%, rgba(147, 197, 253, .35), transparent 60%);
             animation: drift2 14s ease-in-out infinite alternate
         }
-        
+
         @keyframes drift {
             0% {
                 transform: translate(0, 0)
             }
+
             100% {
                 transform: translate(14px, 22px)
             }
         }
-        
+
         @keyframes drift2 {
             0% {
                 transform: translate(0, 0)
             }
+
             100% {
                 transform: translate(-16px, -18px)
             }
         }
-        
+
         .sparkle {
             position: absolute;
             inset: 0;
             pointer-events: none
         }
-        
+
         .sparkle span {
             position: absolute;
             font-size: 18px;
@@ -529,37 +535,40 @@
             animation: rise 8s linear infinite;
             filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .35))
         }
-        
+
         @keyframes rise {
             0% {
                 transform: translateY(10px);
                 opacity: 0
             }
+
             10% {
                 opacity: .9
             }
+
             100% {
                 transform: translateY(-140%);
                 opacity: 0
             }
         }
-        
+
         .section {
             margin: 56px 0
         }
+
         /* Ensure anchored sections account for fixed navbar height */
-        
+
         .hero,
         .section {
             scroll-margin-top: 120px
         }
-        
+
         .title {
             display: flex;
             align-items: center;
             gap: 10px
         }
-        
+
         .title .ribbon {
             height: 18px;
             width: 64px;
@@ -567,24 +576,24 @@
             border-radius: 999px;
             box-shadow: 0 6px 16px rgba(249, 168, 212, .45)
         }
-        
+
         .section h2 {
             margin: 0;
             font: 800 36px/1.1 Outfit
         }
-        
+
         .lead {
             margin: 10px 0 18px;
             color: var(--sub)
         }
-        
+
         .subhead {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin: 8px 0 16px
         }
-        
+
         .facts {
             position: relative;
             border: 1px dashed rgba(2, 6, 23, .08);
@@ -592,13 +601,13 @@
             background: radial-gradient(#e5e7eb 1px, transparent 1px) 0 0/14px 14px, rgba(255, 255, 255, .6);
             padding: 16px
         }
-        
+
         .facts-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             gap: 16px
         }
-        
+
         .fact {
             background: rgba(255, 255, 255, .7);
             backdrop-filter: blur(10px);
@@ -607,14 +616,14 @@
             box-shadow: 0 10px 24px rgba(2, 6, 23, .08);
             padding: 16px
         }
-        
+
         .fact h5 {
             margin: 0 0 8px;
             font-weight: 700;
             color: #94a3b8;
             text-transform: capitalize
         }
-        
+
         .fact-xl {
             grid-column: span 6;
             display: flex;
@@ -622,32 +631,32 @@
             justify-content: center;
             min-height: 220px
         }
-        
+
         .fact-xl .big {
             font: 800 74px/1 Outfit;
             margin: 6px 0
         }
-        
+
         .fact-xl .big.blue {
             background: linear-gradient(90deg, #60a5fa, #2563eb);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent
         }
-        
+
         .fact-xl .big.green {
             background: linear-gradient(90deg, #a4fdbc, #1eb50b);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent
         }
-        
+
         .fact-img {
             grid-column: span 4;
             padding: 0;
             overflow: hidden
         }
-        
+
         .fact-img figure {
             position: relative;
             margin: 0;
@@ -655,14 +664,14 @@
             overflow: hidden;
             border-radius: 18px
         }
-        
+
         .fact-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block
         }
-        
+
         .fact-img .cap {
             position: absolute;
             left: 0;
@@ -672,19 +681,19 @@
             background: linear-gradient(to top, rgba(0, 0, 0, .45), transparent 50%);
             color: #fff
         }
-        
+
         .fact-img .cap small {
             display: block;
             opacity: .8
         }
-        
+
         .fact-sm {
             grid-column: span 4;
             display: flex;
             align-items: center;
             gap: 12px
         }
-        
+
         .fact-sm .icon {
             width: 44px;
             height: 44px;
@@ -695,74 +704,76 @@
             font-size: 20px;
             color: #1e293b
         }
-        
+
         .fact-sm b {
             display: block
         }
-        
+
         @media(max-width:900px) {
             .facts-grid {
                 grid-template-columns: repeat(6, 1fr)
             }
+
             .fact-xl {
                 grid-column: span 6
             }
+
             .fact-img,
             .fact-sm {
                 grid-column: span 6
             }
         }
-        
+
         .bento {
             display: grid;
             grid-template-columns: 1.2fr .8fr;
             gap: 18px
         }
-        
+
         @media(max-width:980px) {
             .bento {
                 grid-template-columns: 1fr
             }
         }
-        
+
         .xp-card,
         .skills-card {
             padding: 18px;
             border-radius: 18px;
             box-shadow: var(--shadow)
         }
-        
+
         .xp-card {
             background: var(--glass);
             border: 1px solid var(--ring);
             backdrop-filter: blur(12px) saturate(130%)
         }
-        
+
         .skills-card {
             background: var(--glass);
             border: 1px solid var(--ring);
             backdrop-filter: blur(12px) saturate(130%)
         }
-        
+
         .xp-head {
             display: flex;
             align-items: center;
             gap: 8px;
             margin: 0 0 10px
         }
-        
+
         .xp-head .ribbon {
             width: 54px;
             height: 14px;
             border-radius: 999px;
             background: var(--gblue)
         }
-        
+
         .xp-timeline {
             position: relative;
             margin-top: 6px
         }
-        
+
         .xp-timeline::before {
             content: "";
             position: absolute;
@@ -774,7 +785,7 @@
             opacity: .35;
             border-radius: 999px
         }
-        
+
         .xp-item {
             position: relative;
             display: grid;
@@ -782,11 +793,11 @@
             gap: 14px;
             padding: 12px 0
         }
-        
+
         .xp-item+.xp-item {
             border-top: 1px dashed rgba(15, 23, 42, .08)
         }
-        
+
         .xp-item .dot {
             width: 44px;
             height: 44px;
@@ -798,11 +809,11 @@
             font-size: 22px;
             box-shadow: 0 10px 24px rgba(30, 64, 175, .2)
         }
-        
+
         .xp-item h4 {
             margin: .1rem 0
         }
-        
+
         .period {
             display: inline-flex;
             gap: 8px;
@@ -815,30 +826,30 @@
             color: #1e3a8a;
             margin: .15rem 0 .4rem
         }
-        
+
         .xp-item ul {
             margin: .25rem 0 .5rem 1rem;
             color: #334155
         }
-        
+
         .xp-item .stack {
             display: flex;
             gap: 8px;
             flex-wrap: wrap
         }
-        
+
         .skill-bento {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 14px
         }
-        
+
         @media(max-width:600px) {
             .skill-bento {
                 grid-template-columns: 1fr
             }
         }
-        
+
         .skill-card {
             background: rgba(255, 255, 255, .75);
             border: 1px solid var(--ring);
@@ -846,18 +857,18 @@
             padding: 14px;
             box-shadow: 0 12px 28px rgba(2, 6, 23, .08)
         }
-        
+
         .skill-card h4 {
             margin: 0 0 6px
         }
-        
+
         .skill-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             margin-bottom: 10px
         }
-        
+
         .skill-tag {
             padding: 6px 10px;
             border: 1px solid var(--ring);
@@ -865,28 +876,28 @@
             background: #fff;
             font-weight: 700
         }
-        
+
         .meter {
             height: 8px;
             border-radius: 999px;
             background: rgba(2, 6, 23, .08);
             overflow: hidden
         }
-        
+
         .meter i {
             display: block;
             height: 100%;
             border-radius: 999px;
             background: var(--gblue)
         }
-        
+
         .tools-line {
             margin-top: 12px;
             display: flex;
             gap: 8px;
             flex-wrap: wrap
         }
-        
+
         .search {
             min-width: 220px;
             border: 1px solid var(--ring);
@@ -894,19 +905,19 @@
             padding: 10px 12px;
             background: #fff
         }
-        
+
         .proj-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 18px
         }
-        
+
         @media(max-width:980px) {
             .proj-grid {
                 grid-template-columns: 1fr
             }
         }
-        
+
         .card-proj {
             position: relative;
             border-radius: 18px;
@@ -915,84 +926,84 @@
             box-shadow: 0 18px 40px rgba(2, 6, 23, .12);
             transition: transform .15s
         }
-        
+
         .card-proj:hover {
             transform: translateY(-3px)
         }
-        
+
         .card-proj .thumb {
             position: relative;
             aspect-ratio: 16/10;
             background: linear-gradient(135deg, #8ec5fc, #e0c3fc)
         }
-        
+
         .card-proj .thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block
         }
-        
+
         .card-proj .thumb::after {
             content: "";
             position: absolute;
             inset: 0;
             background: linear-gradient(to top, rgba(0, 0, 0, .35), transparent 55%)
         }
-        
+
         .card-proj .meta {
             padding: 12px 14px
         }
-        
+
         .card-proj h4 {
             margin: 0;
             color: #0f172a
         }
-        
+
         .status {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             margin-top: 6px
         }
-        
+
         .tag.prod {
             background: #eafff1;
             border-color: #34d399;
             color: #065f46
         }
-        
+
         .tag.proj {
             background: #eef2ff;
             border-color: #60a5fa;
             color: #1e3a8a
         }
-        
+
         .tag.wip {
             background: #fff7ed;
             border-color: #fb923c;
             color: #9a3412
         }
-        
+
         .tag.arch {
             background: #f8fafc;
             border-color: #94a3b8;
             color: #334155
         }
-        
+
         .card-proj .desc {
             color: #475569;
             margin-top: 6px;
             font-size: 14px
         }
-        
+
         .card-proj .links {
             margin-top: 10px;
             display: flex;
             gap: 10px;
             flex-wrap: wrap
         }
-        
+
         .linkbtn {
             padding: 8px 12px;
             border: 1px solid var(--ring);
@@ -1002,23 +1013,23 @@
             font-weight: 700;
             color: #0f172a
         }
-        
+
         .linkbtn:hover {
             transform: translateY(-1px)
         }
-        
+
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 16px
         }
-        
+
         @media(max-width:980px) {
             .contact-grid {
                 grid-template-columns: repeat(2, 1fr)
             }
         }
-        
+
         .c-card {
             position: relative;
             overflow: hidden;
@@ -1030,17 +1041,17 @@
             box-shadow: 0 18px 40px rgba(2, 6, 23, .12);
             transition: transform .15s
         }
-        
+
         .c-card:hover {
             transform: translateY(-3px)
         }
-        
+
         .c-card .row {
             display: flex;
             align-items: center;
             gap: 12px
         }
-        
+
         .c-card .icon {
             width: 44px;
             height: 44px;
@@ -1051,33 +1062,33 @@
             font-size: 22px;
             color: #1e3a8a
         }
-        
+
         .c-card h4 {
             margin: 0
         }
-        
+
         .c-card p {
             margin: .25rem 0 .6rem;
             color: #475569
         }
-        
+
         .c-actions {
             display: flex;
             gap: 8px;
             flex-wrap: wrap
         }
-        
+
         .bokeh {
             position: absolute;
             inset: 0;
             pointer-events: none;
             overflow: hidden
         }
-        
+
         .bokeh.hidden {
             display: none
         }
-        
+
         .bokeh span {
             position: absolute;
             border-radius: 50%;
@@ -1085,21 +1096,23 @@
             mix-blend-mode: screen;
             animation: bokehRise var(--dur, 12s) linear infinite
         }
-        
+
         @keyframes bokehRise {
             0% {
                 transform: translateY(10%);
                 opacity: 0
             }
+
             10% {
                 opacity: .8
             }
+
             100% {
                 transform: translateY(-110%);
                 opacity: 0
             }
         }
-        
+
         .toast {
             position: fixed;
             left: 50%;
@@ -1113,12 +1126,12 @@
             opacity: 0;
             pointer-events: none
         }
-        
+
         .toast.show {
             opacity: 1;
             transition: opacity .25s
         }
-        
+
         .confetti {
             position: absolute;
             width: 8px;
@@ -1128,17 +1141,18 @@
             pointer-events: none;
             mix-blend-mode: screen
         }
-        
+
         @keyframes conf {
             0% {
                 transform: translate(0, 0) rotate(0)
             }
+
             100% {
                 transform: translate(var(--dx), var(--dy)) rotate(var(--rot));
                 opacity: 0
             }
         }
-        
+
         .footer {
             margin: 42px 0 28px;
             text-align: center;
@@ -1164,12 +1178,16 @@
                 <div class="grid">
                     <div class="floater float-y float-tilt" style="justify-self:start">
                         <article class="ig glass liquid" id="igCard">
-                            <div class="frame" id="igFrame"><img src="../assets/images/tanapcha_highlight.jpg" alt="Highlight"></div>
+                            <div class="frame" id="igFrame"><img src="../assets/images/tanapcha_highlight.jpg"
+                                    alt="Highlight"></div>
                             <div class="row">
                                 <button class="like" id="likeBtn" aria-pressed="false" title="Like">
-                <svg class="heart-svg" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.35-9.33-8.24C1.4 9.6 3.24 6.5 6.3 6.5c1.86 0 3.06 1.05 3.7 2.1.64-1.05 1.84-2.1 3.7-2.1 3.06 0 4.9 3.1 3.63 6.26C19.5 16.65 12 21 12 21z"/></svg>
-                <span class="like-count" id="likeCount">5,000</span>
-              </button>
+                                    <svg class="heart-svg" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 21s-7.5-4.35-9.33-8.24C1.4 9.6 3.24 6.5 6.3 6.5c1.86 0 3.06 1.05 3.7 2.1.64-1.05 1.84-2.1 3.7-2.1 3.06 0 4.9 3.1 3.63 6.26C19.5 16.65 12 21 12 21z" />
+                                    </svg>
+                                    <span class="like-count" id="likeCount">5,000</span>
+                                </button>
                                 <div class="actions">
                                     <button class="ig-btn" id="commentBtn" title="Comments">💬</button>
                                     <button class="ig-btn" id="shareBtn" title="Share">⤴</button>
@@ -1208,7 +1226,8 @@
                 <div class="ribbon"></div>
                 <h2>About</h2>
             </div>
-            <p class="lead">I’m <b>Tanapat Chamted</b> (aka <b>Makufff</b>) — a student & builder who loves cute UIs and solid systems.</p>
+            <p class="lead">I’m <b>Tanapat Chamted</b> (aka <b>Makufff</b>) — a student & builder who loves cute UIs and
+                solid systems.</p>
             <div class="facts">
                 <div class="facts-grid">
                     <div class="fact fact-xl">
@@ -1237,17 +1256,20 @@
                     <div class="fact fact-sm">
                         <div class="icon">🏠</div>
                         <div>
-                            <h5>Based in</h5><b>Ladkrabang, Bangkok</b></div>
+                            <h5>Based in</h5><b>Ladkrabang, Bangkok</b>
+                        </div>
                     </div>
                     <div class="fact fact-sm">
                         <div class="icon">🎂</div>
                         <div>
-                            <h5>Birthday</h5><b>May 27, 2005</b></div>
+                            <h5>Birthday</h5><b>May 27, 2005</b>
+                        </div>
                     </div>
                     <div class="fact fact-sm">
                         <div class="icon">🧑‍💻</div>
                         <div>
-                            <h5>Full name</h5><b>Tanapat Chamted</b></div>
+                            <h5>Full name</h5><b>Tanapat Chamted</b>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1275,7 +1297,9 @@
                                     <li>Designed GraphRAG pipelines for structured knowledge retrieval.</li>
                                     <li>Shipped a full-stack web app to surface real-time forecasts.</li>
                                 </ul>
-                                <div class="stack"><span class="badge">Python</span><span class="badge">LLM/RAG</span><span class="badge">Time Series</span><span class="badge">Full-stack</span></div>
+                                <div class="stack"><span class="badge">Python</span><span
+                                        class="badge">LLM/RAG</span><span class="badge">Time Series</span><span
+                                        class="badge">Full-stack</span></div>
                             </div>
                         </div>
                         <div class="xp-item">
@@ -1288,7 +1312,9 @@
                                     <li>Automated VM provisioning (Xen Orchestra), REST API, PostgreSQL.</li>
                                     <li>Infrastructure & billing integrations for self-serve VPS.</li>
                                 </ul>
-                                <div class="stack"><span class="badge">Next.js</span><span class="badge">REST</span><span class="badge">PostgreSQL</span><span class="badge">Infra</span></div>
+                                <div class="stack"><span class="badge">Next.js</span><span
+                                        class="badge">REST</span><span class="badge">PostgreSQL</span><span
+                                        class="badge">Infra</span></div>
                             </div>
                         </div>
                         <div class="xp-item">
@@ -1301,7 +1327,8 @@
                                     <li>Object recognition & applied CV on web applications.</li>
                                     <li>Prototyped AI project management with LLM + GraphRAG.</li>
                                 </ul>
-                                <div class="stack"><span class="badge">YOLO</span><span class="badge">Docker</span><span class="badge">Computer Vision</span><span class="badge">LLM</span></div>
+                                <div class="stack"><span class="badge">YOLO</span><span class="badge">Docker</span><span
+                                        class="badge">Computer Vision</span><span class="badge">LLM</span></div>
                             </div>
                         </div>
                     </div>
@@ -1315,26 +1342,35 @@
                     <div class="skill-bento">
                         <div class="skill-card">
                             <h4>Frontend</h4>
-                            <div class="skill-tags"><span class="skill-tag">TypeScript</span><span class="skill-tag">React</span><span class="skill-tag">Next.js</span><span class="skill-tag">Tailwind</span></div>
+                            <div class="skill-tags"><span class="skill-tag">TypeScript</span><span
+                                    class="skill-tag">React</span><span class="skill-tag">Next.js</span><span
+                                    class="skill-tag">Tailwind</span></div>
                             <div class="meter"><i style="width:88%"></i></div>
                         </div>
                         <div class="skill-card">
                             <h4>Backend & DB</h4>
-                            <div class="skill-tags"><span class="skill-tag">Go</span><span class="skill-tag">Node</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">REST</span></div>
+                            <div class="skill-tags"><span class="skill-tag">Go</span><span
+                                    class="skill-tag">Node</span><span class="skill-tag">PostgreSQL</span><span
+                                    class="skill-tag">REST</span></div>
                             <div class="meter"><i style="width:78%"></i></div>
                         </div>
                         <div class="skill-card">
                             <h4>AI / ML</h4>
-                            <div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">LLM/RAG</span><span class="skill-tag">Computer Vision</span><span class="skill-tag">Time-Series</span></div>
+                            <div class="skill-tags"><span class="skill-tag">Python</span><span
+                                    class="skill-tag">LLM/RAG</span><span class="skill-tag">Computer Vision</span><span
+                                    class="skill-tag">Time-Series</span></div>
                             <div class="meter"><i style="width:74%"></i></div>
                         </div>
                         <div class="skill-card">
                             <h4>DevOps</h4>
-                            <div class="skill-tags"><span class="skill-tag">Docker</span><span class="skill-tag">CI/CD</span><span class="skill-tag">Xen Orchestra</span><span class="skill-tag">Linux</span></div>
+                            <div class="skill-tags"><span class="skill-tag">Docker</span><span
+                                    class="skill-tag">CI/CD</span><span class="skill-tag">Xen Orchestra</span><span
+                                    class="skill-tag">Linux</span></div>
                             <div class="meter"><i style="width:72%"></i></div>
                         </div>
                     </div>
-                    <div class="tools-line"><span class="chip">Figma</span><span class="chip">Git</span><span class="chip">GraphRAG</span><span class="chip">Cloud</span></div>
+                    <div class="tools-line"><span class="chip">Figma</span><span class="chip">Git</span><span
+                            class="chip">GraphRAG</span><span class="chip">Cloud</span></div>
                 </article>
             </div>
 
@@ -1343,7 +1379,7 @@
             <div id="medium-feed" style="margin-top:24px">
                 <style>
                     /* Scoped styles for Medium Feed */
-                    
+
                     #medium-feed {
                         --bg: #ffffff;
                         --ink: #0f172a;
@@ -1351,13 +1387,13 @@
                         --card: #ffffff;
                         --ring: #e2e8f0
                     }
-                    
+
                     #medium-feed .wrap {
                         max-width: 1100px;
                         margin: 0 auto;
                         padding: 0
                     }
-                    
+
                     #medium-feed header {
                         display: flex;
                         gap: 12px;
@@ -1365,14 +1401,14 @@
                         justify-content: space-between;
                         margin: 0 0 12px
                     }
-                    
+
                     #medium-feed header h3 {
                         font-size: 24px;
                         margin: 0;
                         color: var(--ink);
                         font-weight: 800
                     }
-                    
+
                     #medium-feed header a {
                         color: #312b36;
                         text-decoration: none;
@@ -1382,13 +1418,13 @@
                         background: #fff;
                         box-shadow: 0 6px 16px rgba(0, 0, 0, .06)
                     }
-                    
+
                     #medium-feed #feed {
                         display: grid;
                         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
                         gap: 18px
                     }
-                    
+
                     #medium-feed .card {
                         background: var(--card);
                         border: 1px solid var(--ring);
@@ -1398,21 +1434,21 @@
                         flex-direction: column;
                         box-shadow: var(--shadow)
                     }
-                    
+
                     #medium-feed .thumb {
                         display: block;
                         aspect-ratio: 16/9;
                         background: linear-gradient(135deg, var(--p2), var(--p3));
                         position: relative
                     }
-                    
+
                     #medium-feed .thumb img {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
                         display: block
                     }
-                    
+
                     #medium-feed .thumb .no-thumb {
                         position: absolute;
                         inset: 0;
@@ -1422,11 +1458,11 @@
                         font-weight: 800;
                         letter-spacing: .04em
                     }
-                    
+
                     #medium-feed .meta {
                         padding: 14px 14px 16px
                     }
-                    
+
                     #medium-feed .title {
                         display: inline-block;
                         color: var(--ink);
@@ -1436,23 +1472,23 @@
                         text-decoration: none;
                         margin-bottom: 6px
                     }
-                    
+
                     #medium-feed .title:hover {
                         text-decoration: underline
                     }
-                    
+
                     #medium-feed .date {
                         font-size: 12px;
                         color: var(--muted);
                         margin-bottom: 8px
                     }
-                    
+
                     #medium-feed .desc {
                         font-size: 14px;
                         color: var(--ink);
                         opacity: .9
                     }
-                    
+
                     #medium-feed .loading,
                     #medium-feed .error {
                         padding: 24px;
@@ -1484,12 +1520,12 @@
                 </template>
 
                 <script>
-                    (function() {
+                    (function () {
                         const FEED_USER = '@ruffblitz'
                         const rssJson = u => `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent('https://medium.com/feed/' + u)}`
                         const rssRaw = u => `https://medium.com/feed/${u}`
                         const ao = url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`
-                        const jina = url => `https://r.jina.ai/http://${url.replace(/^https?:\/\//,'')}`
+                        const jina = url => `https://r.jina.ai/http://${url.replace(/^https?:\/\//, '')}`
                         const CANDIDATES = [
                             rssJson(FEED_USER),
                             rssJson(FEED_USER.replace(/^@/, '')),
@@ -1508,14 +1544,14 @@
                         const parseXml = (xmlText) => {
                             const doc = new DOMParser().parseFromString(xmlText, 'text/xml')
                             const channel = doc.querySelector('channel')
-                            const title = channel ? .querySelector('title') ? .textContent || 'Medium Feed'
-                            const link = channel ? .querySelector('link') ? .textContent || '#'
+                            const title = channel?.querySelector('title')?.textContent || 'Medium Feed'
+                            const link = channel?.querySelector('link')?.textContent || '#'
                             const items = [...doc.querySelectorAll('item')].map(x => ({
-                                title: x.querySelector('title') ? .textContent || 'Untitled',
-                                link: x.querySelector('link') ? .textContent || '#',
-                                pubDate: x.querySelector('pubDate') ? .textContent || '',
-                                description: x.querySelector('description') ? .textContent || '',
-                                content: x.querySelector('content\\:encoded') ? .textContent || ''
+                                title: x.querySelector('title')?.textContent || 'Untitled',
+                                link: x.querySelector('link')?.textContent || '#',
+                                pubDate: x.querySelector('pubDate')?.textContent || '',
+                                description: x.querySelector('description')?.textContent || '',
+                                content: x.querySelector('content\\:encoded')?.textContent || ''
                             }))
                             return {
                                 feed: {
@@ -1529,13 +1565,13 @@
                             const feedEl = document.getElementById('feed')
                             const headTitle = document.getElementById('feed-title')
                             const headLink = document.getElementById('feed-link')
-                            const tpl = document.getElementById('card-tpl') ? .content
+                            const tpl = document.getElementById('card-tpl')?.content
                             if (!feedEl || !tpl) {
                                 return
                             }
                             try {
                                 let data = null
-                                    // Try rss2json first (nicer structure)
+                                // Try rss2json first (nicer structure)
                                 for (const url of CANDIDATES) {
                                     try {
                                         const r = await fetch(url)
@@ -1545,7 +1581,7 @@
                                             data = j
                                             break
                                         }
-                                    } catch {}
+                                    } catch { }
                                 }
                                 // Fallback: fetch raw RSS (AllOrigins, then Jina AI) and parse
                                 if (!data) {
@@ -1563,7 +1599,7 @@
                                                     const j = await r.json()
                                                     xml = j && j.contents ? j.contents : ''
                                                 }
-                                            } catch {}
+                                            } catch { }
                                             if (!xml) {
                                                 const r2 = await fetch(jina(u))
                                                 if (r2.ok) xml = await r2.text()
@@ -1584,12 +1620,12 @@
                                                     break
                                                 }
                                             }
-                                        } catch {}
+                                        } catch { }
                                     }
                                 }
                                 if (!data) throw new Error('all attempts failed')
-                                headTitle.textContent = data.feed ? .title || 'Medium Feed'
-                                if (data.feed ? .link) {
+                                headTitle.textContent = data.feed?.title || 'Medium Feed'
+                                if (data.feed?.link) {
                                     headLink.href = data.feed.link;
                                     headLink.style.display = 'inline'
                                 }
@@ -1637,7 +1673,8 @@
                             <p>@your.ig</p>
                         </div>
                     </div>
-                    <div class="c-actions"><a class="btn" href="https://instagram.com/" target="_blank" rel="noopener">Visit</a><button class="btn small" data-copy="@your.ig">Copy</button></div>
+                    <div class="c-actions"><a class="btn" href="https://instagram.com/" target="_blank"
+                            rel="noopener">Visit</a><button class="btn small" data-copy="@your.ig">Copy</button></div>
                 </div>
                 <div class="c-card">
                     <div class="row">
@@ -1647,7 +1684,9 @@
                             <p>github.com/yourname</p>
                         </div>
                     </div>
-                    <div class="c-actions"><a class="btn" href="https://github.com/" target="_blank" rel="noopener">Visit</a><button class="btn small" data-copy="github.com/yourname">Copy</button></div>
+                    <div class="c-actions"><a class="btn" href="https://github.com/" target="_blank"
+                            rel="noopener">Visit</a><button class="btn small"
+                            data-copy="github.com/yourname">Copy</button></div>
                 </div>
                 <div class="c-card">
                     <div class="row">
@@ -1657,7 +1696,9 @@
                             <p>linkedin.com/in/yourname</p>
                         </div>
                     </div>
-                    <div class="c-actions"><a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">Visit</a><button class="btn small" data-copy="linkedin.com/in/yourname">Copy</button></div>
+                    <div class="c-actions"><a class="btn" href="https://www.linkedin.com/" target="_blank"
+                            rel="noopener">Visit</a><button class="btn small"
+                            data-copy="linkedin.com/in/yourname">Copy</button></div>
                 </div>
                 <div class="c-card">
                     <div class="row">
@@ -1667,7 +1708,8 @@
                             <p>you@example.com</p>
                         </div>
                     </div>
-                    <div class="c-actions"><a class="btn" href="mailto:you@example.com">Compose</a><button class="btn small" data-copy="you@example.com">Copy</button></div>
+                    <div class="c-actions"><a class="btn" href="mailto:you@example.com">Compose</a><button
+                            class="btn small" data-copy="you@example.com">Copy</button></div>
                 </div>
             </div>
         </section>
@@ -1720,7 +1762,7 @@
             const href = a.getAttribute('href');
             if (href && href.startsWith('#')) {
                 e.preventDefault();
-                document.querySelector(href) ? .scrollIntoView({
+                document.querySelector(href)?.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
@@ -1740,7 +1782,7 @@
             s.style.left = (Math.random() * 92 + 4) + '%';
             s.style.bottom = '-10px';
             s.style.animationDuration = (6 + Math.random() * 6) + 's';
-            sparkles ? .appendChild(s);
+            sparkles?.appendChild(s);
             setTimeout(() => s.remove(), 12000)
         }
         for (let i = 0; i < 18; i++) setTimeout(addSpark, i * 300);
@@ -1772,9 +1814,9 @@
             const r = stage.getBoundingClientRect();
             const px = (e.clientX - r.left) / r.width - .5;
             const py = (e.clientY - r.top) / r.height - .5;
-            ig.style.transform = `translate3d(${px*-18}px,${py*-10}px,0) rotate(${px*3}deg)`;
-            char.style.transform = `translate3d(${px*14}px,${py*10}px,0)`;
-            stage.style.backgroundPosition = `${50+px*4}% ${50+py*4}%`
+            ig.style.transform = `translate3d(${px * -18}px,${py * -10}px,0) rotate(${px * 3}deg)`;
+            char.style.transform = `translate3d(${px * 14}px,${py * 10}px,0)`;
+            stage.style.backgroundPosition = `${50 + px * 4}% ${50 + py * 4}%`
         })
         stage.addEventListener('pointerleave', () => {
             ig.style.transform = '';
@@ -1871,7 +1913,7 @@
                 while (cList.children.length > 20) cList.lastChild.remove()
             }
         })
-        $('#shareBtn').addEventListener('click', async() => {
+        $('#shareBtn').addEventListener('click', async () => {
             const url = location.href;
             try {
                 if (navigator.share) {
@@ -1883,14 +1925,14 @@
                     await navigator.clipboard.writeText(url);
                     showToast('Link copied!')
                 }
-            } catch {}
+            } catch { }
         })
 
-        $$('[data-copy]').forEach(btn => btn.addEventListener('click', async() => {
+        $$('[data-copy]').forEach(btn => btn.addEventListener('click', async () => {
             try {
                 await navigator.clipboard.writeText(btn.getAttribute('data-copy'));
                 showToast('Copied: ' + btn.getAttribute('data-copy'))
-            } catch {}
+            } catch { }
         }))
 
         const revealEls = document.querySelectorAll('.xp-card,.skills-card,.card-proj,.c-card,.ig,.char')
