@@ -1,2064 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bento Glass Portfolio — Makufff</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg1: #eef2ff;
-            --bg2: #f8fbff;
-            --ink: #0f172a;
-            --sub: #475569;
-            --p1: #2563eb;
-            --p2: #60a5fa;
-            --p3: #93c5fd;
-            --glass: rgba(255, 255, 255, .18);
-            --ring: rgba(30, 64, 175, .25);
-            --shadow: 0 24px 70px rgba(2, 6, 23, .18);
-            --r: 22px;
-            --gblue: linear-gradient(90deg, var(--p3), var(--p1));
-            --gsoft: linear-gradient(90deg, #fff, #eaf2ff)
-        }
-
-        * {
-            box-sizing: border-box
-        }
-
-        html,
-        body {
-            height: 100%
-        }
-
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            margin: 0;
-            font-family: Outfit, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-            color: var(--ink);
-            background: linear-gradient(180deg, var(--bg1), var(--bg2) 60%) fixed;
-            overflow-x: hidden
-        }
-
-        .container {
-            max-width: 1180px;
-            margin: 0 auto;
-            padding: 24px
-        }
-
-        .nav {
-            position: fixed;
-            z-index: 40;
-            top: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 18px;
-            align-items: center;
-            background: var(--glass);
-            backdrop-filter: blur(12px) saturate(120%);
-            -webkit-backdrop-filter: blur(12px) saturate(120%);
-            border: 1px solid var(--ring);
-            padding: 10px 14px;
-            border-radius: 999px;
-            box-shadow: var(--shadow)
-        }
-
-        .brand {
-            font: 800 16px/1 Outfit;
-            letter-spacing: .06em;
-            padding: 8px 12px;
-            border-radius: 999px;
-            background: var(--gblue);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent
-        }
-
-        .nav a {
-            padding: 8px 12px;
-            border-radius: 999px;
-            text-decoration: none;
-            color: #312b36;
-            font-weight: 700
-        }
-
-        .nav a:hover {
-            background: rgba(255, 255, 255, .55)
-        }
-
-        .nav a.active,
-        .nav a.activate {
-            background: var(--gsoft);
-            box-shadow: 0 6px 24px rgba(249, 168, 212, .35)
-        }
-
-        .nav-ctrls {
-            display: flex;
-            gap: 8px;
-            margin-left: 8px
-        }
-
-        .ctrl {
-            border: 1px solid var(--ring);
-            background: rgba(255, 255, 255, .55);
-            border-radius: 10px;
-            padding: 6px 8px;
-            cursor: pointer;
-            box-shadow: 0 6px 18px rgba(2, 6, 23, .08)
-        }
-
-        .ctrl:hover {
-            transform: translateY(-1px)
-        }
-
-        .ctrl.active {
-            background: var(--gsoft)
-        }
-
-        .hero {
-            position: relative;
-            padding-top: 110px
-        }
-
-        .stage {
-            position: relative;
-            border-radius: 28px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            background: url('../assets/images/tanapcha_wallpaper.jpeg') center/cover no-repeat fixed
-        }
-
-        @media(max-width:900px) {
-            .stage {
-                background-attachment: scroll
-            }
-        }
-
-        .stage::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, .08), rgba(0, 0, 0, .38));
-            pointer-events: none
-        }
-
-        .overlay-dark::before {
-            background: linear-gradient(to bottom, rgba(255, 255, 255, .08), rgba(0, 0, 0, .38))
-        }
-
-        .overlay-light::before {
-            background: linear-gradient(to bottom, rgba(255, 255, 255, .6), rgba(255, 255, 255, .3))
-        }
-
-        .stage::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(80% 60% at 50% 20%, rgba(255, 255, 255, 0), rgba(0, 0, 0, .12) 70%, rgba(0, 0, 0, .22));
-            opacity: .9;
-            pointer-events: none
-        }
-
-        .hero .grid {
-            display: grid;
-            grid-template-columns: .9fr 1.1fr;
-            gap: 18px;
-            padding: 26px
-        }
-
-        @media(max-width:980px) {
-            .hero .grid {
-                grid-template-columns: 1fr
-            }
-        }
-
-        .floater {
-            will-change: transform
-        }
-
-        .float-y {
-            animation: floatY 6s ease-in-out infinite alternate
-        }
-
-        .float-tilt {
-            animation: tilt 8s ease-in-out infinite alternate
-        }
-
-        @keyframes floatY {
-            0% {
-                transform: translateY(-6px)
-            }
-
-            100% {
-                transform: translateY(10px)
-            }
-        }
-
-        @keyframes tilt {
-            0% {
-                transform: rotate(-3deg)
-            }
-
-            100% {
-                transform: rotate(3deg)
-            }
-        }
-
-        .glass {
-            background: var(--glass);
-            backdrop-filter: blur(12px) saturate(130%);
-            -webkit-backdrop-filter: blur(12px) saturate(130%);
-            border: 1px solid var(--ring)
-        }
-
-        .card {
-            border: 1px solid var(--ring);
-            border-radius: 18px;
-            background: #fff;
-            box-shadow: 0 18px 40px rgba(2, 6, 23, .12)
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            font-weight: 800;
-            padding: 10px 12px;
-            border-radius: 12px;
-            border: 1px solid var(--ring);
-            background: #fff;
-            color: #0f172a;
-            cursor: pointer
-        }
-
-        .btn:hover {
-            transform: translateY(-1px)
-        }
-
-        .small {
-            font-size: 12px
-        }
-
-        .chip,
-        .badge,
-        .tag {
-            padding: 8px 12px;
-            border: 1px solid var(--ring);
-            border-radius: 999px;
-            background: #fff;
-            font-weight: 700
-        }
-
-        .chip.active {
-            background: var(--gsoft)
-        }
-
-        .ig {
-            position: relative;
-            width: min(520px, 100%);
-            border-radius: 20px;
-            padding: 14px;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, .14);
-            transform-origin: 20% 50%
-        }
-
-        .ig .frame {
-            position: relative;
-            aspect-ratio: 1/1;
-            border-radius: 14px;
-            overflow: hidden;
-            background: linear-gradient(135deg, #8ec5fc, #e0c3fc)
-        }
-
-        .ig .frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block
-        }
-
-        .ig .row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 12px;
-            color: #6b7280
-        }
-
-        .ig .actions {
-            display: flex;
-            gap: 8px
-        }
-
-        .ig .ig-btn {
-            border: 1px solid var(--ring);
-            background: #fff;
-            border-radius: 10px;
-            padding: 6px 10px;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(2, 6, 23, .08)
-        }
-
-        .ig .ig-btn:hover {
-            transform: translateY(-1px)
-        }
-
-        .ig .bubble {
-            margin-top: 12px;
-            display: inline-block;
-            background: linear-gradient(180deg, #cfe3ff, #b8ccff);
-            color: #2b3460;
-            font-weight: 800;
-            border-radius: 14px;
-            padding: 10px 14px;
-            cursor: pointer
-        }
-
-        .ig .stats {
-            display: flex;
-            gap: 12px;
-            margin-top: 18px
-        }
-
-        .stat {
-            flex: 1;
-            border: 1px solid rgba(0, 0, 0, .06);
-            border-radius: 14px;
-            padding: 12px;
-            text-align: center;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, .08)
-        }
-
-        .stat b {
-            font-size: 20px;
-            display: block
-        }
-
-        .like {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid var(--ring);
-            background: #fff;
-            border-radius: 999px;
-            padding: 8px 12px;
-            cursor: pointer;
-            box-shadow: 0 10px 24px rgba(2, 6, 23, .08);
-            font-weight: 800;
-            color: #334155
-        }
-
-        .like:hover {
-            transform: translateY(-1px)
-        }
-
-        .heart-svg {
-            width: 20px;
-            height: 20px;
-            display: block
-        }
-
-        .heart-svg path {
-            fill: none;
-            stroke: #ef4444;
-            stroke-width: 2
-        }
-
-        .like.liked .heart-svg path {
-            fill: #ef4444
-        }
-
-        .like-count {
-            min-width: 52px;
-            text-align: left
-        }
-
-        .float-heart {
-            position: absolute;
-            left: var(--x);
-            top: var(--y);
-            transform: translate(-50%, -50%);
-            font-size: 20px;
-            color: #ef4444;
-            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .25));
-            animation: floatHeart 900ms ease-out forwards;
-            pointer-events: none
-        }
-
-        @keyframes floatHeart {
-            0% {
-                opacity: 0;
-                transform: translate(-50%, -40%) scale(.6)
-            }
-
-            30% {
-                opacity: 1
-            }
-
-            100% {
-                opacity: 0;
-                transform: translate(-50%, -140%) scale(1.4)
-            }
-        }
-
-        .comments {
-            margin-top: 12px;
-            border: 1px solid rgba(0, 0, 0, .06);
-            border-radius: 12px;
-            background: rgba(255, 255, 255, .65);
-            backdrop-filter: blur(6px);
-            padding: 10px;
-            display: none
-        }
-
-        .comments.show {
-            display: block
-        }
-
-        .comments ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            max-height: 180px;
-            overflow: auto
-        }
-
-        .comments li {
-            padding: 6px 2px;
-            border-bottom: 1px dashed rgba(0, 0, 0, .06);
-            font-size: 14px;
-            color: #334155
-        }
-
-        .comments input {
-            margin-top: 8px;
-            width: 100%;
-            border: 1px solid rgba(0, 0, 0, .1);
-            border-radius: 10px;
-            padding: 10px 12px;
-            font: inherit
-        }
-
-        .char {
-            position: relative;
-            border-radius: 26px;
-            box-shadow: var(--shadow);
-            overflow: hidden
-        }
-
-        .char .img {
-            height: 480px;
-            border-radius: 22px;
-            overflow: hidden;
-            display: grid;
-            place-items: center;
-            filter: drop-shadow(0 30px 40px rgba(0, 0, 0, .25))
-        }
-
-        .char .img img {
-            width: auto;
-            height: 100%;
-            object-fit: contain;
-            display: block
-        }
-
-        .liquid {
-            position: relative
-        }
-
-        .liquid::before,
-        .liquid::after {
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(14px);
-            opacity: .9;
-            pointer-events: none
-        }
-
-        .liquid::before {
-            width: 180px;
-            height: 180px;
-            left: -40px;
-            top: -30px;
-            background: radial-gradient(circle at 30% 30%, rgba(37, 99, 235, .35), transparent 60%);
-            animation: drift 12s ease-in-out infinite alternate
-        }
-
-        .liquid::after {
-            width: 220px;
-            height: 220px;
-            right: -50px;
-            bottom: -40px;
-            background: radial-gradient(circle at 70% 70%, rgba(147, 197, 253, .35), transparent 60%);
-            animation: drift2 14s ease-in-out infinite alternate
-        }
-
-        @keyframes drift {
-            0% {
-                transform: translate(0, 0)
-            }
-
-            100% {
-                transform: translate(14px, 22px)
-            }
-        }
-
-        @keyframes drift2 {
-            0% {
-                transform: translate(0, 0)
-            }
-
-            100% {
-                transform: translate(-16px, -18px)
-            }
-        }
-
-        .sparkle {
-            position: absolute;
-            inset: 0;
-            pointer-events: none
-        }
-
-        .sparkle span {
-            position: absolute;
-            font-size: 18px;
-            opacity: .85;
-            animation: rise 8s linear infinite;
-            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .35))
-        }
-
-        @keyframes rise {
-            0% {
-                transform: translateY(10px);
-                opacity: 0
-            }
-
-            10% {
-                opacity: .9
-            }
-
-            100% {
-                transform: translateY(-140%);
-                opacity: 0
-            }
-        }
-
-        .section {
-            margin: 56px 0
-        }
-
-        /* Ensure anchored sections account for fixed navbar height */
-
-        .hero,
-        .section {
-            scroll-margin-top: 120px
-        }
-
-        .title {
-            display: flex;
-            align-items: center;
-            gap: 10px
-        }
-
-        .title .ribbon {
-            height: 18px;
-            width: 64px;
-            background: var(--gblue);
-            border-radius: 999px;
-            box-shadow: 0 6px 16px rgba(249, 168, 212, .45)
-        }
-
-        .section h2 {
-            margin: 0;
-            font: 800 36px/1.1 Outfit
-        }
-
-        .lead {
-            margin: 10px 0 18px;
-            color: var(--sub)
-        }
-
-        .subhead {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 8px 0 16px
-        }
-
-        .facts {
-            position: relative;
-            border: 1px dashed rgba(2, 6, 23, .08);
-            border-radius: 22px;
-            background: radial-gradient(#e5e7eb 1px, transparent 1px) 0 0/14px 14px, rgba(255, 255, 255, .6);
-            padding: 16px
-        }
-
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 16px
-        }
-
-        .fact {
-            background: rgba(255, 255, 255, .7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(2, 6, 23, .08);
-            border-radius: 18px;
-            box-shadow: 0 10px 24px rgba(2, 6, 23, .08);
-            padding: 16px
-        }
-
-        .fact h5 {
-            margin: 0 0 8px;
-            font-weight: 700;
-            color: #94a3b8;
-            text-transform: capitalize
-        }
-
-        .fact-xl {
-            grid-column: span 6;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            min-height: 220px
-        }
-
-        .fact-xl .big {
-            font: 800 74px/1 Outfit;
-            margin: 6px 0
-        }
-
-        .fact-xl .big.blue {
-            background: linear-gradient(90deg, #60a5fa, #2563eb);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent
-        }
-
-        .fact-xl .big.green {
-            background: linear-gradient(90deg, #a4fdbc, #1eb50b);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent
-        }
-
-        .fact-img {
-            grid-column: span 4;
-            padding: 0;
-            overflow: hidden
-        }
-
-        .fact-img figure {
-            position: relative;
-            margin: 0;
-            aspect-ratio: 16/10;
-            overflow: hidden;
-            border-radius: 18px
-        }
-
-        .fact-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block
-        }
-
-        .fact-img .cap {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            padding: 14px;
-            background: linear-gradient(to top, rgba(0, 0, 0, .45), transparent 50%);
-            color: #fff
-        }
-
-        .fact-img .cap small {
-            display: block;
-            opacity: .8
-        }
-
-        .fact-sm {
-            grid-column: span 4;
-            display: flex;
-            align-items: center;
-            gap: 12px
-        }
-
-        .fact-sm .icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: #f1f5f9;
-            display: grid;
-            place-items: center;
-            font-size: 20px;
-            color: #1e293b
-        }
-
-        .fact-sm b {
-            display: block
-        }
-
-        @media(max-width:900px) {
-            .facts-grid {
-                grid-template-columns: repeat(6, 1fr)
-            }
-
-            .fact-xl {
-                grid-column: span 6
-            }
-
-            .fact-img,
-            .fact-sm {
-                grid-column: span 6
-            }
-        }
-
-        .bento {
-            display: grid;
-            grid-template-columns: 1.2fr .8fr;
-            gap: 18px
-        }
-
-        @media(max-width:980px) {
-            .bento {
-                grid-template-columns: 1fr
-            }
-        }
-
-        .xp-card,
-        .skills-card {
-            padding: 18px;
-            border-radius: 18px;
-            box-shadow: var(--shadow)
-        }
-
-        .xp-card {
-            background: var(--glass);
-            border: 1px solid var(--ring);
-            backdrop-filter: blur(12px) saturate(130%)
-        }
-
-        .skills-card {
-            background: var(--glass);
-            border: 1px solid var(--ring);
-            backdrop-filter: blur(12px) saturate(130%)
-        }
-
-        .xp-head {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin: 0 0 10px
-        }
-
-        .xp-head .ribbon {
-            width: 54px;
-            height: 14px;
-            border-radius: 999px;
-            background: var(--gblue)
-        }
-
-        .xp-timeline {
-            position: relative;
-            margin-top: 6px
-        }
-
-        .xp-timeline::before {
-            content: "";
-            position: absolute;
-            left: 22px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--p3), var(--p1));
-            opacity: .35;
-            border-radius: 999px
-        }
-
-        .xp-item {
-            position: relative;
-            display: grid;
-            grid-template-columns: 54px 1fr;
-            gap: 14px;
-            padding: 12px 0
-        }
-
-        .xp-item+.xp-item {
-            border-top: 1px dashed rgba(15, 23, 42, .08)
-        }
-
-        .xp-item .dot {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            display: grid;
-            place-items: center;
-            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-            color: #1e3a8a;
-            font-size: 22px;
-            box-shadow: 0 10px 24px rgba(30, 64, 175, .2)
-        }
-
-        .xp-item h4 {
-            margin: .1rem 0
-        }
-
-        .period {
-            display: inline-flex;
-            gap: 8px;
-            align-items: center;
-            padding: 6px 10px;
-            border: 1px solid var(--ring);
-            border-radius: 999px;
-            background: #fff;
-            font-weight: 800;
-            color: #1e3a8a;
-            margin: .15rem 0 .4rem
-        }
-
-        .xp-item ul {
-            margin: .25rem 0 .5rem 1rem;
-            color: #334155
-        }
-
-        .xp-item .stack {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap
-        }
-
-        .skill-bento {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px
-        }
-
-        @media(max-width:600px) {
-            .skill-bento {
-                grid-template-columns: 1fr
-            }
-        }
-
-        .skill-card {
-            background: rgba(255, 255, 255, .75);
-            border: 1px solid var(--ring);
-            border-radius: 16px;
-            padding: 14px;
-            box-shadow: 0 12px 28px rgba(2, 6, 23, .08)
-        }
-
-        .skill-card h4 {
-            margin: 0 0 6px
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 10px
-        }
-
-        .skill-tag {
-            padding: 6px 10px;
-            border: 1px solid var(--ring);
-            border-radius: 999px;
-            background: #fff;
-            font-weight: 700
-        }
-
-        .meter {
-            height: 8px;
-            border-radius: 999px;
-            background: rgba(2, 6, 23, .08);
-            overflow: hidden
-        }
-
-        .meter i {
-            display: block;
-            height: 100%;
-            border-radius: 999px;
-            background: var(--gblue)
-        }
-
-        .tools-line {
-            margin-top: 12px;
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap
-        }
-
-        .search {
-            min-width: 220px;
-            border: 1px solid var(--ring);
-            border-radius: 12px;
-            padding: 10px 12px;
-            background: #fff
-        }
-
-        .proj-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px
-        }
-
-        @media(max-width:980px) {
-            .proj-grid {
-                grid-template-columns: 1fr
-            }
-        }
-
-        .card-proj {
-            position: relative;
-            border-radius: 18px;
-            overflow: hidden;
-            border: 1px solid var(--ring);
-            box-shadow: 0 18px 40px rgba(2, 6, 23, .12);
-            transition: transform .15s
-        }
-
-        .card-proj:hover {
-            transform: translateY(-3px)
-        }
-
-        .card-proj .thumb {
-            position: relative;
-            aspect-ratio: 16/10;
-            background: linear-gradient(135deg, #8ec5fc, #e0c3fc)
-        }
-
-        .card-proj .thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block
-        }
-
-        .card-proj .thumb::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, .35), transparent 55%)
-        }
-
-        .card-proj .meta {
-            padding: 12px 14px
-        }
-
-        .card-proj h4 {
-            margin: 0;
-            color: #0f172a
-        }
-
-        .status {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 6px
-        }
-
-        .tag.prod {
-            background: #eafff1;
-            border-color: #34d399;
-            color: #065f46
-        }
-
-        .tag.proj {
-            background: #eef2ff;
-            border-color: #60a5fa;
-            color: #1e3a8a
-        }
-
-        .tag.wip {
-            background: #fff7ed;
-            border-color: #fb923c;
-            color: #9a3412
-        }
-
-        .tag.arch {
-            background: #f8fafc;
-            border-color: #94a3b8;
-            color: #334155
-        }
-
-        .card-proj .desc {
-            color: #475569;
-            margin-top: 6px;
-            font-size: 14px
-        }
-
-        .card-proj .links {
-            margin-top: 10px;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap
-        }
-
-        .linkbtn {
-            padding: 8px 12px;
-            border: 1px solid var(--ring);
-            border-radius: 10px;
-            background: #fff;
-            text-decoration: none;
-            font-weight: 700;
-            color: #0f172a
-        }
-
-        .linkbtn:hover {
-            transform: translateY(-1px)
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px
-        }
-
-        @media(max-width:980px) {
-            .contact-grid {
-                grid-template-columns: repeat(2, 1fr)
-            }
-        }
-
-        .c-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 18px;
-            border: 1px solid var(--ring);
-            background: rgba(255, 255, 255, .7);
-            backdrop-filter: blur(10px);
-            padding: 16px;
-            box-shadow: 0 18px 40px rgba(2, 6, 23, .12);
-            transition: transform .15s
-        }
-
-        .c-card:hover {
-            transform: translateY(-3px)
-        }
-
-        .c-card .row {
-            display: flex;
-            align-items: center;
-            gap: 12px
-        }
-
-        .c-card .icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-            display: grid;
-            place-items: center;
-            font-size: 22px;
-            color: #1e3a8a
-        }
-
-        .c-card h4 {
-            margin: 0
-        }
-
-        .c-card p {
-            margin: .25rem 0 .6rem;
-            color: #475569
-        }
-
-        .c-actions {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap
-        }
-
-        .bokeh {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden
-        }
-
-        .bokeh.hidden {
-            display: none
-        }
-
-        .bokeh span {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(96, 165, 250, .35), rgba(37, 99, 235, .12) 60%, transparent 70%);
-            mix-blend-mode: screen;
-            animation: bokehRise var(--dur, 12s) linear infinite
-        }
-
-        @keyframes bokehRise {
-            0% {
-                transform: translateY(10%);
-                opacity: 0
-            }
-
-            10% {
-                opacity: .8
-            }
-
-            100% {
-                transform: translateY(-110%);
-                opacity: 0
-            }
-        }
-
-        .toast {
-            position: fixed;
-            left: 50%;
-            bottom: 28px;
-            transform: translateX(-50%);
-            background: #0b1220;
-            color: #fff;
-            padding: 10px 14px;
-            border-radius: 12px;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, .25);
-            opacity: 0;
-            pointer-events: none
-        }
-
-        .toast.show {
-            opacity: 1;
-            transition: opacity .25s
-        }
-
-        .confetti {
-            position: absolute;
-            width: 8px;
-            height: 10px;
-            border-radius: 2px;
-            animation: conf 900ms ease-out forwards;
-            pointer-events: none;
-            mix-blend-mode: screen
-        }
-
-        @keyframes conf {
-            0% {
-                transform: translate(0, 0) rotate(0)
-            }
-
-            100% {
-                transform: translate(var(--dx), var(--dy)) rotate(var(--rot));
-                opacity: 0
-            }
-        }
-
-        .footer {
-            margin: 42px 0 28px;
-            text-align: center;
-            color: var(--sub)
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Makufff</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../components/styles/theme.tanapcha.css">
+  <link rel="stylesheet" href="../components/styles/styles.css">
 </head>
-
 <body>
-    <nav class="nav">
-        <div class="brand">Makufff</div>
-        <a href="#home" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#showcase">Showcase</a>
-        <a href="#contact">Contact</a>
+  <nav class="nav">
+    <div class="brand">Makufff</div>
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#showcase">Showcase</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-    </nav>
-
-    <main class="container">
-        <section id="home" class="hero">
-            <div class="stage overlay-dark">
-                <div class="bokeh" id="bokeh"></div>
-                <div class="grid">
-                    <div class="floater float-y float-tilt" style="justify-self:start">
-                        <article class="ig glass liquid" id="igCard">
-                            <div class="frame" id="igFrame"><img src="../assets/images/tanapcha_highlight.jpg"
-                                    alt="Highlight"></div>
-                            <div class="row">
-                                <button class="like" id="likeBtn" aria-pressed="false" title="Like">
-                                    <svg class="heart-svg" viewBox="0 0 24 24">
-                                        <path
-                                            d="M12 21s-7.5-4.35-9.33-8.24C1.4 9.6 3.24 6.5 6.3 6.5c1.86 0 3.06 1.05 3.7 2.1.64-1.05 1.84-2.1 3.7-2.1 3.06 0 4.9 3.1 3.63 6.26C19.5 16.65 12 21 12 21z" />
-                                    </svg>
-                                    <span class="like-count" id="likeCount">5,000</span>
-                                </button>
-                                <div class="actions">
-                                    <button class="ig-btn" id="commentBtn" title="Comments">💬</button>
-                                    <button class="ig-btn" id="shareBtn" title="Share">⤴</button>
-                                </div>
-                            </div>
-                            <div class="bubble" id="loveBubble">_.makufff.js</div>
-                            <div class="stats">
-                                <div class="stat"><b>1,916</b>
-                                    <div class="small">Following</div>
-                                </div>
-                                <div class="stat"><b>43.5M</b>
-                                    <div class="small">Followers</div>
-                                </div>
-                                <div class="stat"><b id="likesStat">5k</b>
-                                    <div class="small">Likes</div>
-                                </div>
-                            </div>
-                            <div class="comments" id="comments">
-                                <ul id="commentList"></ul>
-                                <input id="commentInput" type="text" placeholder="Write a comment…" maxlength="120">
-                            </div>
-                        </article>
-                    </div>
-                    <div class="floater float-y" style="justify-self:stretch">
-                        <article class="char glass liquid">
-                            <div class="img"><img src="../assets/images/tanapcha_character.png" alt="Character"></div>
-                            <div class="sparkle" id="sparkles"></div>
-                        </article>
-                    </div>
+  <main class="container">
+    <section id="home" class="hero">
+      <div class="stage overlay-dark">
+        <div class="bokeh" id="bokeh"></div>
+        <div class="grid">
+          <div class="floater float-y float-tilt" style="justify-self:start">
+            <article class="ig glass liquid" id="igCard">
+              <div class="frame" id="igFrame">
+                <img src="assets/images/tanapcha_highlight.jpg" alt="Highlight">
+              </div>
+              <div class="row">
+                <button class="like" id="likeBtn" aria-pressed="false" title="Like">
+                  <svg class="heart-svg" viewBox="0 0 24 24">
+                    <path d="M12 21s-7.5-4.35-9.33-8.24C1.4 9.6 3.24 6.5 6.3 6.5c1.86 0 3.06 1.05 3.7 2.1.64-1.05 1.84-2.1 3.7-2.1 3.06 0 4.9 3.1 3.63 6.26C19.5 16.65 12 21 12 21z"/>
+                  </svg>
+                  <span class="like-count" id="likeCount">5,000</span>
+                </button>
+                <div class="actions">
+                  <button class="ig-btn" id="commentBtn" title="Comments">💬</button>
+                  <button class="ig-btn" id="shareBtn" title="Share">⤴</button>
                 </div>
-            </div>
-        </section>
-
-        <section id="about" class="section">
-            <div class="title">
-                <div class="ribbon"></div>
-                <h2>About</h2>
-            </div>
-            <p class="lead">I’m <b>Tanapat Chamted</b> (aka <b>Makufff</b>) — a student & builder who loves cute UIs and
-                solid systems.</p>
-            <div class="facts">
-                <div class="facts-grid">
-                    <div class="fact fact-xl">
-                        <h5>Also known as</h5>
-                        <div class="big blue">Makufff</div>
-                    </div>
-                    <div class="fact fact-xl">
-                        <h5>Status</h5>
-                        <div class="big green">Available</div>
-                    </div>
-                    <div class="fact fact-img">
-                        <figure><img src="../assets/images/tanapcha_passion.jpg" alt="">
-                            <figcaption class="cap"><small>Passions</small><b>Technology & Travel</b></figcaption>
-                        </figure>
-                    </div>
-                    <div class="fact fact-img">
-                        <figure><img src="../assets/images/tanapcha_food.jpg" alt="">
-                            <figcaption class="cap"><small>Favorite Food</small><b>Seafood</b></figcaption>
-                        </figure>
-                    </div>
-                    <div class="fact fact-img">
-                        <figure><img src="../assets/images/tanapcha_study.webp" alt="">
-                            <figcaption class="cap"><small>Studying at</small><b>IT KMITL</b></figcaption>
-                        </figure>
-                    </div>
-                    <div class="fact fact-sm">
-                        <div class="icon">🏠</div>
-                        <div>
-                            <h5>Based in</h5><b>Ladkrabang, Bangkok</b>
-                        </div>
-                    </div>
-                    <div class="fact fact-sm">
-                        <div class="icon">🎂</div>
-                        <div>
-                            <h5>Birthday</h5><b>May 27, 2005</b>
-                        </div>
-                    </div>
-                    <div class="fact fact-sm">
-                        <div class="icon">🧑‍💻</div>
-                        <div>
-                            <h5>Full name</h5><b>Tanapat Chamted</b>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="showcase" class="section">
-            <div class="title">
-                <div class="ribbon"></div>
-                <h2>Showcase</h2>
-            </div>
-            <div class="bento">
-                <article class="xp-card">
-                    <header class="xp-head">
-                        <div class="ribbon"></div>
-                        <h3 style="margin:0">Experience</h3>
-                    </header>
-                    <div class="xp-timeline">
-                        <div class="xp-item">
-                            <div class="dot">🐰</div>
-                            <div>
-                                <h4>Vibe Coding Engineer — Ruffblitz</h4>
-                                <span class="period">May 2025 – Present</span>
-                                <ul>
-                                    <li>Ship PoC in 1-2 days from brief to staging link</li>
-                                    <li>Choose the stack based on use case (e.g., Next.js, Go)</li>
-                                    <li>One-command deploy via Docker & CI/CD</li>
-                                    <li>Realtime demo with WebSocket/SSE</li>
-                                    <li>Integrate payments & webhooks (e.g., Stripe)</li>
-                                </ul>
-                                <div class="stack">
-                                    <span class="badge">Next.js</span>
-                                    <span class="badge">Go (Gin)</span>
-                                    <span class="badge">FastAPI</span>
-                                    <span class="badge">PostgreSQL</span>
-                                    <span class="badge">MongoDB</span>
-                                    <span class="badge">Redis</span>
-                                    <span class="badge">WebSocket</span>
-                                    <span class="badge">SSE</span>
-                                    <span class="badge">Docker</span>
-                                    <span class="badge">GitHub Actions</span>
-                                    <span class="badge">CI/CD</span>
-                                    <span class="badge">Vercel</span>
-                                    <span class="badge">Proxmox</span>
-                                    <span class="badge">Stripe</span>
-                                    <span class="badge">Slip Verify</span>
-                                    <span class="badge">Streamlit</span>
-                                    <span class="badge">Gradio</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="xp-item">
-                            <div class="dot">🧁</div>
-                            <div>
-                                <h4>Full-Stack Developer — Fridayz VPS</h4>
-                                <span class="period">2024 – 2025</span>
-                                <ul>
-                                    <li>Next.js front-end for marketing & customer portal.</li>
-                                    <li>Automated VM provisioning (Xen Orchestra), REST API, PostgreSQL.</li>
-                                    <li>Infrastructure & billing integrations for self-serve VPS.</li>
-                                </ul>
-                                <div class="stack"><span class="badge">Next.js</span><span
-                                        class="badge">REST</span><span class="badge">PostgreSQL</span><span
-                                        class="badge">Infra</span></div>
-                            </div>
-                        </div>
-                        <div class="xp-item">
-                            <div class="dot">⚡</div>
-                            <div>
-                                <h4>Data Scientist Intern — Provincial Electricity Authority</h4>
-                                <span class="period">Apr 2025 – Jun 2025</span>
-                                <ul>
-                                    <li>Built time-series forecasting with big data & LLM-driven approaches.</li>
-                                    <li>Designed GraphRAG pipelines for structured knowledge retrieval.</li>
-                                    <li>Shipped a full-stack web app to surface real-time forecasts.</li>
-                                </ul>
-                                <div class="stack"><span class="badge">Python</span><span
-                                        class="badge">LLM/RAG</span><span class="badge">Time Series</span><span
-                                        class="badge">Full-stack</span></div>
-                            </div>
-                        </div>
-                        <div class="xp-item">
-                            <div class="dot">🛡️</div>
-                            <div>
-                                <h4>Computer Vision & LLM Intern — V89 Technology</h4>
-                                <span class="period">Aug 2024 – Oct 2024</span>
-                                <ul>
-                                    <li>Optimized YOLO for CPU and deployed via Docker/REST.</li>
-                                    <li>Object recognition & applied CV on web applications.</li>
-                                    <li>Prototyped AI project management with LLM + GraphRAG.</li>
-                                </ul>
-                                <div class="stack"><span class="badge">YOLO</span><span class="badge">Docker</span><span
-                                        class="badge">Computer Vision</span><span class="badge">LLM</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-               <style>
-.skills-card{--s-ink:#0f172a;--s-sub:#475569;--s-bg:rgba(255,255,255,.65);--s-glass:rgba(255,255,255,.28);--s-ring:rgba(15,23,42,.08);--s-g1:#f9a8d4;--s-g2:#a78bfa;--s-g3:#60a5fa;border-radius:24px;padding:20px 20px 16px;position:relative;overflow:hidden;background:
-linear-gradient(180deg,rgba(249,168,212,.22),rgba(96,165,250,.18)),
-radial-gradient(1200px 600px at -10% -10%,rgba(255,255,255,.9),rgba(255,255,255,.55) 40%,rgba(255,255,255,.3) 70%,rgba(255,255,255,0) 72%);
-backdrop-filter:blur(8px);border:1px solid var(--s-ring);box-shadow:0 10px 30px rgba(2,8,23,.08);}
-.skills-card .xp-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.skills-card .xp-head h3{font:700 18px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Inter,Roboto;letter-spacing:.2px;color:var(--s-ink)}
-.skills-card .ribbon{width:44px;height:14px;border-radius:999px;background:
-conic-gradient(from 180deg,var(--s-g1),var(--s-g2),var(--s-g3),var(--s-g1));filter:saturate(1.1)}
-.skill-bento{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
-.skill-card{grid-column:span 6;display:flex;flex-direction:column;gap:10px;padding:14px 14px 12px;border-radius:18px;background:
-linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.45)),
-radial-gradient(300px 120px at 0% 0%,rgba(249,168,212,.25),transparent),
-radial-gradient(300px 120px at 100% 0%,rgba(96,165,250,.22),transparent);
-border:1px solid var(--s-ring);box-shadow:0 4px 14px rgba(2,8,23,.06);transition:transform .18s ease,box-shadow .18s ease}
-.skill-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(2,8,23,.12)}
-.skill-card h4{margin:0;font:700 14px/1 ui-sans-serif,system-ui,Inter;color:var(--s-ink);display:flex;align-items:center;gap:8px}
-.skill-tags{display:flex;flex-wrap:wrap;gap:8px}
-.skill-tag{display:inline-flex;align-items:center;padding:7px 10px;border-radius:999px;font:600 12px/1 ui-sans-serif,system-ui,Inter;color:#0b1324;background:
-linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.7));
-border:1px solid rgba(2,8,23,.06);box-shadow:inset 0 -1px 0 rgba(255,255,255,.6),0 6px 14px rgba(2,8,23,.06)}
-.meter{position:relative;height:10px;border-radius:999px;background:linear-gradient(180deg,rgba(2,8,23,.06),rgba(2,8,23,.04));border:1px solid rgba(2,8,23,.06);overflow:hidden}
-.meter i{display:block;height:100%;border-radius:999px;background:
-linear-gradient(90deg,var(--s-g1),var(--s-g2),var(--s-g3));
-background-size:300% 100%;animation:slide 4s linear infinite}
-.meter b{position:absolute;right:8px;top:50%;transform:translateY(-50%);font:700 10px/1 ui-sans-serif,system-ui,Inter;color:#0b1324;background:rgba(255,255,255,.8);padding:2px 6px;border-radius:999px;border:1px solid rgba(2,8,23,.06)}
-@keyframes slide{0%{background-position:0 0}100%{background-position:300% 0}}
-.tools-line{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.chip{padding:8px 12px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.7));border:1px solid rgba(2,8,23,.06);font:600 12px/1 ui-sans-serif,system-ui,Inter;color:#0b1324;box-shadow:inset 0 -1px 0 rgba(255,255,255,.6),0 6px 14px rgba(2,8,23,.06)}
-@media (max-width:900px){.skill-card{grid-column:span 12}}
-</style>
-
-<article class="skills-card">
-  <header class="xp-head">
-    <div class="ribbon"></div>
-    <h3 style="margin:0">Skills</h3>
-  </header>
-
-  <div class="skill-bento">
-    <div class="skill-card">
-      <h4>Frontend ⚡</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">TypeScript</span><span class="skill-tag">React</span><span class="skill-tag">Next.js</span><span class="skill-tag">SvelteKit</span><span class="skill-tag">Tailwind CSS</span><span class="skill-tag">tRPC</span><span class="skill-tag">Vite</span>
+              </div>
+              <div class="bubble" id="loveBubble">_.makufff.js</div>
+              <div class="stats">
+                <div class="stat"><b>1,916</b><div class="small">Following</div></div>
+                <div class="stat"><b>43.5M</b><div class="small">Followers</div></div>
+                <div class="stat"><b id="likesStat">5k</b><div class="small">Likes</div></div>
+              </div>
+              <div class="comments" id="comments">
+                <ul id="commentList"></ul>
+                <input id="commentInput" type="text" placeholder="Write a comment…" maxlength="120">
+              </div>
+            </article>
+          </div>
+          <div class="floater float-y" style="justify-self:stretch">
+            <article class="char glass liquid">
+              <div class="img">
+                <img src="assets/images/tanapcha_character.png" alt="Character">
+              </div>
+              <div class="sparkle" id="sparkles"></div>
+            </article>
+          </div>
+        </div>
       </div>
-      <div class="meter"><i style="width:90%"></i><b>90%</b></div>
-    </div>
+    </section>
 
-    <div class="skill-card">
-      <h4>Backend & DB 🛠️</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">Go (Gin)</span><span class="skill-tag">Node.js</span><span class="skill-tag">FastAPI</span><span class="skill-tag">GraphQL</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">Redis</span><span class="skill-tag">Prisma/Drizzle</span>
+    <section id="about" class="section">
+      <div class="title"><div class="ribbon"></div><h2>About</h2></div>
+      <p class="lead">I’m <b>Tanapat Chamted</b> (aka <b>Makufff</b>) — a student & builder who loves cute UIs and solid systems.</p>
+      <div class="facts">
+        <div class="facts-grid">
+          <div class="fact fact-xl"><h5>Also known as</h5><div class="big blue">Makufff</div></div>
+          <div class="fact fact-xl"><h5>Status</h5><div class="big green">Available</div></div>
+          <div class="fact fact-img">
+            <figure><img src="assets/images/tanapcha_passion.jpg" alt="">
+              <figcaption class="cap"><small>Passions</small><b>Technology & Travel</b></figcaption>
+            </figure>
+          </div>
+          <div class="fact fact-img">
+            <figure><img src="assets/images/tanapcha_food.jpg" alt="">
+              <figcaption class="cap"><small>Favorite Food</small><b>Seafood</b></figcaption>
+            </figure>
+          </div>
+          <div class="fact fact-img">
+            <figure><img src="assets/images/tanapcha_study.webp" alt="">
+              <figcaption class="cap"><small>Studying at</small><b>IT KMITL</b></figcaption>
+            </figure>
+          </div>
+          <div class="fact fact-sm"><div class="icon">🏠</div><div><h5>Based in</h5><b>Ladkrabang, Bangkok</b></div></div>
+          <div class="fact fact-sm"><div class="icon">🎂</div><div><h5>Birthday</h5><b>May 27, 2005</b></div></div>
+          <div class="fact fact-sm"><div class="icon">🧑‍💻</div><div><h5>Full name</h5><b>Tanapat Chamted</b></div></div>
+        </div>
       </div>
-      <div class="meter"><i style="width:82%"></i><b>82%</b></div>
-    </div>
+    </section>
 
-    <div class="skill-card">
-      <h4>AI / ML 🧠</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">Python</span><span class="skill-tag">PyTorch</span><span class="skill-tag">LLM/RAG</span><span class="skill-tag">Computer Vision</span><span class="skill-tag">Time-Series</span><span class="skill-tag">Streamlit</span><span class="skill-tag">Gradio</span>
-      </div>
-      <div class="meter"><i style="width:78%"></i><b>78%</b></div>
-    </div>
-
-    <div class="skill-card">
-      <h4>DevOps 🚀</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">Docker</span><span class="skill-tag">CI/CD</span><span class="skill-tag">GitHub Actions</span><span class="skill-tag">NixOS</span><span class="skill-tag">Linux</span><span class="skill-tag">Monitoring</span>
-      </div>
-      <div class="meter"><i style="width:76%"></i><b>76%</b></div>
-    </div>
-
-    <div class="skill-card">
-      <h4>Cloud & Infra ☁️</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">Proxmox VE</span><span class="skill-tag">Xen Orchestra</span><span class="skill-tag">Vercel</span><span class="skill-tag">NGINX</span><span class="skill-tag">Traefik</span><span class="skill-tag">Cloudflare</span>
-      </div>
-      <div class="meter"><i style="width:74%"></i><b>74%</b></div>
-    </div>
-
-    <div class="skill-card">
-      <h4>Security 🔐</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">Wireshark</span><span class="skill-tag">Scapy</span><span class="skill-tag">Burp Suite</span><span class="skill-tag">CTF</span><span class="skill-tag">Threat Modeling</span>
-      </div>
-      <div class="meter"><i style="width:70%"></i><b>70%</b></div>
-    </div>
-
-    <div class="skill-card">
-      <h4>Data Eng 📊</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">Pandas</span><span class="skill-tag">Polars</span><span class="skill-tag">Airflow</span><span class="skill-tag">DuckDB</span><span class="skill-tag">Parquet</span>
-      </div>
-      <div class="meter"><i style="width:68%"></i><b>68%</b></div>
-    </div>
-
-    <div class="skill-card">
-      <h4>Mobile & Desktop 📱</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">React Native</span><span class="skill-tag">Tauri</span><span class="skill-tag">Electron</span>
-      </div>
-      <div class="meter"><i style="width:60%"></i><b>60%</b></div>
-    </div>
-  </div>
-
-  <div class="tools-line">
-    <span class="chip">Figma</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">GraphRAG</span><span class="chip">Postman</span><span class="chip">Insomnia</span><span class="chip">Cursor</span><span class="chip">VS Code</span><span class="chip">Excalidraw</span><span class="chip">Notion</span><span class="chip">Makefile</span><span class="chip">Mermaid</span>
-  </div>
-</article>
+    <section id="showcase" class="section">
+      <div class="title"><div class="ribbon"></div><h2>Showcase</h2></div>
+      <div class="bento">
+        <article class="xp-card">
+          <header class="xp-head"><div class="ribbon"></div><h3 style="margin:0">Experience</h3></header>
+          <div class="xp-timeline">
+            <div class="xp-item">
+              <div class="dot">🐰</div>
+              <div>
+                <h4>Vibe Coding Engineer — Ruffblitz</h4>
+                <span class="period">May 2025 – Present</span>
+                <ul>
+                  <li>Ship PoC in 1–2 days</li>
+                  <li>Choose stack per use case</li>
+                  <li>One-command deploy</li>
+                  <li>Realtime demo via WS/SSE</li>
+                  <li>Integrate payments/webhooks</li>
+                </ul>
+                <div class="stack"><span class="badge">Next.js</span><span class="badge">REST</span><span class="badge">PostgreSQL</span><span class="badge">Infra</span></div>
+              </div>
             </div>
-
-
-            <!-- Medium Feed replacement -->
-            <div id="medium-feed" style="margin-top:24px">
-                <style>
-                    /* Scoped styles for Medium Feed */
-
-                    #medium-feed {
-                        --bg: #ffffff;
-                        --ink: #0f172a;
-                        --muted: #475569;
-                        --card: #ffffff;
-                        --ring: #e2e8f0
-                    }
-
-                    #medium-feed .wrap {
-                        max-width: 1100px;
-                        margin: 0 auto;
-                        padding: 0
-                    }
-
-                    #medium-feed header {
-                        display: flex;
-                        gap: 12px;
-                        align-items: center;
-                        justify-content: space-between;
-                        margin: 0 0 12px
-                    }
-
-                    #medium-feed header h3 {
-                        font-size: 24px;
-                        margin: 0;
-                        color: var(--ink);
-                        font-weight: 800
-                    }
-
-                    #medium-feed header a {
-                        color: #312b36;
-                        text-decoration: none;
-                        border: 1px solid var(--ring);
-                        padding: 8px 12px;
-                        border-radius: 12px;
-                        background: #fff;
-                        box-shadow: 0 6px 16px rgba(0, 0, 0, .06)
-                    }
-
-                    #medium-feed #feed {
-                        display: grid;
-                        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                        gap: 18px
-                    }
-
-                    #medium-feed .card {
-                        background: var(--card);
-                        border: 1px solid var(--ring);
-                        border-radius: 18px;
-                        overflow: hidden;
-                        display: flex;
-                        flex-direction: column;
-                        box-shadow: var(--shadow)
-                    }
-
-                    #medium-feed .thumb {
-                        display: block;
-                        aspect-ratio: 16/9;
-                        background: linear-gradient(135deg, var(--p2), var(--p3));
-                        position: relative
-                    }
-
-                    #medium-feed .thumb img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        display: block
-                    }
-
-                    #medium-feed .thumb .no-thumb {
-                        position: absolute;
-                        inset: 0;
-                        display: grid;
-                        place-items: center;
-                        color: #2b2730;
-                        font-weight: 800;
-                        letter-spacing: .04em
-                    }
-
-                    #medium-feed .meta {
-                        padding: 14px 14px 16px
-                    }
-
-                    #medium-feed .title {
-                        display: inline-block;
-                        color: var(--ink);
-                        font-weight: 800;
-                        font-size: 16px;
-                        line-height: 1.3;
-                        text-decoration: none;
-                        margin-bottom: 6px
-                    }
-
-                    #medium-feed .title:hover {
-                        text-decoration: underline
-                    }
-
-                    #medium-feed .date {
-                        font-size: 12px;
-                        color: var(--muted);
-                        margin-bottom: 8px
-                    }
-
-                    #medium-feed .desc {
-                        font-size: 14px;
-                        color: var(--ink);
-                        opacity: .9
-                    }
-
-                    #medium-feed .loading,
-                    #medium-feed .error {
-                        padding: 24px;
-                        border: 1px dashed var(--ring);
-                        border-radius: 12px;
-                        text-align: center;
-                        background: rgba(255, 255, 255, .5)
-                    }
-                </style>
-                <div class="wrap">
-                    <header>
-                        <h3 id="feed-title">Articles</h3>
-                        <a id="feed-link" href="#" target="_blank" rel="noopener" style="display:none">Open feed</a>
-                    </header>
-                    <section id="feed">
-                        <div class="loading">Loading…</div>
-                    </section>
-                </div>
-
-                <template id="card-tpl">
-                    <article class="card">
-                        <a class="thumb" target="_blank" rel="noopener"><img alt=""></a>
-                        <div class="meta">
-                            <a class="title" target="_blank" rel="noopener"></a>
-                            <div class="date"></div>
-                            <p class="desc"></p>
-                        </div>
-                    </article>
-                </template>
-
-                <script>
-                    (function () {
-                        const FEED_USER = '@ruffblitz'
-                        const rssJson = u => `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent('https://medium.com/feed/' + u)}`
-                        const rssRaw = u => `https://medium.com/feed/${u}`
-                        const ao = url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`
-                        const jina = url => `https://r.jina.ai/http://${url.replace(/^https?:\/\//, '')}`
-                        const CANDIDATES = [
-                            rssJson(FEED_USER),
-                            rssJson(FEED_USER.replace(/^@/, '')),
-                            rssJson('@' + FEED_USER.replace(/^@/, ''))
-                        ]
-                        const fmt = d => new Date(d).toLocaleDateString('en-US')
-                        const trunc = (s, n = 200) => s && s.length > n ? s.slice(0, n - 1) + '…' : (s || '')
-                        const clean = s => s ? s.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() : ''
-                        const pickThumb = it => {
-                            const byField = it.thumbnail || (it.enclosure && it.enclosure.link)
-                            if (byField) return byField
-                            const html = it.content || it.description || ''
-                            const m = /<img[^>]+src=["']([^"'>]+)["']/i.exec(html)
-                            return m ? m[1] : ''
-                        }
-                        const parseXml = (xmlText) => {
-                            const doc = new DOMParser().parseFromString(xmlText, 'text/xml')
-                            const channel = doc.querySelector('channel')
-                            const title = channel?.querySelector('title')?.textContent || 'Medium Feed'
-                            const link = channel?.querySelector('link')?.textContent || '#'
-                            const items = [...doc.querySelectorAll('item')].map(x => ({
-                                title: x.querySelector('title')?.textContent || 'Untitled',
-                                link: x.querySelector('link')?.textContent || '#',
-                                pubDate: x.querySelector('pubDate')?.textContent || '',
-                                description: x.querySelector('description')?.textContent || '',
-                                content: x.querySelector('content\\:encoded')?.textContent || ''
-                            }))
-                            return {
-                                feed: {
-                                    title,
-                                    link
-                                },
-                                items
-                            }
-                        }
-                        async function load() {
-                            const feedEl = document.getElementById('feed')
-                            const headTitle = document.getElementById('feed-title')
-                            const headLink = document.getElementById('feed-link')
-                            const tpl = document.getElementById('card-tpl')?.content
-                            if (!feedEl || !tpl) {
-                                return
-                            }
-                            try {
-                                let data = null
-                                // Try rss2json first (nicer structure)
-                                for (const url of CANDIDATES) {
-                                    try {
-                                        const r = await fetch(url)
-                                        if (!r.ok) continue
-                                        const j = await r.json()
-                                        if (j && Array.isArray(j.items) && j.items.length) {
-                                            data = j
-                                            break
-                                        }
-                                    } catch { }
-                                }
-                                // Fallback: fetch raw RSS (AllOrigins, then Jina AI) and parse
-                                if (!data) {
-                                    const rawCandidates = [
-                                        rssRaw(FEED_USER),
-                                        rssRaw(FEED_USER.replace(/^@/, '')),
-                                        rssRaw('@' + FEED_USER.replace(/^@/, ''))
-                                    ]
-                                    for (const u of rawCandidates) {
-                                        try {
-                                            let xml = ''
-                                            try {
-                                                const r = await fetch(ao(u))
-                                                if (r.ok) {
-                                                    const j = await r.json()
-                                                    xml = j && j.contents ? j.contents : ''
-                                                }
-                                            } catch { }
-                                            if (!xml) {
-                                                const r2 = await fetch(jina(u))
-                                                if (r2.ok) xml = await r2.text()
-                                            }
-                                            if (xml) {
-                                                const parsed = parseXml(xml)
-                                                if (parsed.items && parsed.items.length) {
-                                                    data = {
-                                                        feed: parsed.feed,
-                                                        items: parsed.items.map(x => ({
-                                                            title: x.title,
-                                                            link: x.link,
-                                                            pubDate: x.pubDate,
-                                                            description: x.description,
-                                                            thumbnail: pickThumb(x)
-                                                        }))
-                                                    }
-                                                    break
-                                                }
-                                            }
-                                        } catch { }
-                                    }
-                                }
-                                if (!data) throw new Error('all attempts failed')
-                                headTitle.textContent = data.feed?.title || 'Medium Feed'
-                                if (data.feed?.link) {
-                                    headLink.href = data.feed.link;
-                                    headLink.style.display = 'inline'
-                                }
-                                feedEl.innerHTML = '';
-                                (data.items || []).slice(0, 3).forEach(it => {
-                                    const node = tpl.cloneNode(true)
-                                    const title = node.querySelector('.title')
-                                    title.textContent = it.title || 'Untitled'
-                                    title.href = it.link
-                                    node.querySelector('.date').textContent = fmt(it.pubDate)
-                                    node.querySelector('.desc').textContent = trunc(clean(it.description || ''), 220)
-                                    const a = node.querySelector('.thumb'),
-                                        img = node.querySelector('img')
-                                    const thumb = it.thumbnail || pickThumb(it) || ''
-                                    if (thumb) {
-                                        img.src = thumb;
-                                        img.alt = it.title || '';
-                                        a.href = it.link
-                                    } else a.remove()
-                                    feedEl.appendChild(node)
-                                })
-                                if (!feedEl.children.length) feedEl.innerHTML = '<div class="loading">No items</div>'
-                            } catch (e) {
-                                feedEl.innerHTML = '<div class="error">Fetch failed</div>'
-                            }
-                        }
-                        load()
-                    })();
-                </script>
+            <div class="xp-item">
+              <div class="dot">🧁</div>
+              <div>
+                <h4>Full-Stack Developer — Fridayz VPS</h4>
+                <span class="period">2024 – 2025</span>
+                <ul>
+                  <li>Next.js portal</li>
+                  <li>Automated VM provisioning</li>
+                  <li>Infra & billing integrations</li>
+                </ul>
+                <div class="stack"><span class="badge">Next.js</span><span class="badge">REST</span><span class="badge">PostgreSQL</span><span class="badge">Infra</span></div>
+              </div>
             </div>
-        </section>
-
-        <section id="contact" class="section">
-            <div class="title">
-                <div class="ribbon"></div>
-                <h2>Contact</h2>
+            <div class="xp-item">
+              <div class="dot">⚡</div>
+              <div>
+                <h4>Data Scientist Intern — PEA</h4>
+                <span class="period">Apr 2025 – Jun 2025</span>
+                <ul>
+                  <li>Time-series + LLM approaches</li>
+                  <li>GraphRAG pipelines</li>
+                  <li>Full-stack realtime forecasts</li>
+                </ul>
+                <div class="stack"><span class="badge">Python</span><span class="badge">LLM/RAG</span><span class="badge">Time Series</span><span class="badge">Full-stack</span></div>
+              </div>
             </div>
-            <p class="lead">Reach me on these platforms — or copy the handle instantly.</p>
-            <div class="contact-grid">
-                <div class="c-card">
-                    <div class="row">
-                        <div class="icon">📸</div>
-                        <div>
-                            <h4>Instagram</h4>
-                            <p>@_.makufff.js</p>
-                        </div>
-                    </div>
-                    <div class="c-actions"><a class="btn" href="https://instagram.com/_.makufff.js" target="_blank"
-                            rel="noopener">Visit</a><button class="btn small" data-copy="_.makufff.js">Copy</button></div>
-                </div>
-                <div class="c-card">
-                    <div class="row">
-                        <div class="icon">🐙</div>
-                        <div>
-                            <h4>GitHub</h4>
-                            <p>github.com/Makufff</p>
-                        </div>
-                    </div>
-                    <div class="c-actions"><a class="btn" href="https://github.com/Makufff" target="_blank"
-                            rel="noopener">Visit</a><button class="btn small"
-                            data-copy="github.com/Makufff">Copy</button></div>
-                </div>
-                <div class="c-card">
-                    <div class="row">
-                        <div class="icon">💼</div>
-                        <div>
-                            <h4>LinkedIn</h4>
-                            <p>linkedin.com/in/tanapat-chamted</p>
-                        </div>
-                    </div>
-                    <div class="c-actions"><a class="btn" href="https://www.linkedin.com/in/tanapat-chamted/" target="_blank"
-                            rel="noopener">Visit</a><button class="btn small"
-                            data-copy="linkedin.com/in/tanapat-chamted">Copy</button></div>
-                </div>
-                <div class="c-card">
-                    <div class="row">
-                        <div class="icon">✉️</div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>makufff.tanapat@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="c-actions"><a class="btn" href="mailto:makufff.tanapat@gmail.com">Compose</a><button
-                            class="btn small" data-copy="makufff.tanapat@gmail.com">Copy</button></div>
-                </div>
+            <div class="xp-item">
+              <div class="dot">🛡️</div>
+              <div>
+                <h4>CV & LLM Intern — V89 Technology</h4>
+                <span class="period">Aug 2024 – Oct 2024</span>
+                <ul>
+                  <li>YOLO on CPU + Docker/REST</li>
+                  <li>Applied CV on web</li>
+                  <li>LLM + GraphRAG POC</li>
+                </ul>
+                <div class="stack"><span class="badge">YOLO</span><span class="badge">Docker</span><span class="badge">Computer Vision</span><span class="badge">LLM</span></div>
+              </div>
             </div>
-        </section>
+          </div>
+        </article>
 
-        <div class="footer small">© 2025 Makufff - All Rights Reserved.</div>
-    </main>
-    <div class="toast" id="toast">Copied!</div>
+        <article class="skills-card">
+          <header class="xp-head"><div class="ribbon"></div><h3 style="margin:0">Skills</h3></header>
+          <div class="skill-bento">
+            <div class="skill-card">
+              <h4>Frontend</h4>
+              <div class="skill-tags"><span class="skill-tag">TypeScript</span><span class="skill-tag">React</span><span class="skill-tag">Next.js</span><span class="skill-tag">Tailwind</span></div>
+              <div class="meter"><i style="width:88%"></i></div>
+            </div>
+            <div class="skill-card">
+              <h4>Backend & DB</h4>
+              <div class="skill-tags"><span class="skill-tag">Go</span><span class="skill-tag">Node</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">REST</span></div>
+              <div class="meter"><i style="width:78%"></i></div>
+            </div>
+            <div class="skill-card">
+              <h4>AI / ML</h4>
+              <div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">LLM/RAG</span><span class="skill-tag">Computer Vision</span><span class="skill-tag">Time-Series</span></div>
+              <div class="meter"><i style="width:74%"></i></div>
+            </div>
+            <div class="skill-card">
+              <h4>DevOps</h4>
+              <div class="skill-tags"><span class="skill-tag">Docker</span><span class="skill-tag">CI/CD</span><span class="skill-tag">Xen Orchestra</span><span class="skill-tag">Linux</span></div>
+              <div class="meter"><i style="width:72%"></i></div>
+            </div>
+          </div>
+          <div class="tools-line"><span class="chip">Figma</span><span class="chip">Git</span><span class="chip">GraphRAG</span><span class="chip">Cloud</span></div>
+        </article>
+      </div>
 
-    <script>
-        const $ = s => document.querySelector(s),
-            $$ = s => [...document.querySelectorAll(s)]
-        const secs = [...document.querySelectorAll('main section')]
-        const navLinks = [...document.querySelectorAll('.nav a')]
+      <div id="medium-feed" style="margin-top:24px">
+        <div class="wrap">
+          <header>
+            <h3 id="feed-title">Articles</h3>
+            <a id="feed-link" href="#" target="_blank" rel="noopener" style="display:none">Open feed</a>
+          </header>
+          <section id="feed"><div class="loading">Loading…</div></section>
+        </div>
 
-        function spy() {
-            const y = scrollY + 140;
-            let current = secs[0];
-            for (let i = 0; i < secs.length; i++) {
-                const s = secs[i];
-                if (s.offsetTop - 160 <= y) current = s;
-            }
-            navLinks.forEach(a => {
-                const on = a.getAttribute('href') === '#' + current.id;
-                a.classList.toggle('active', on);
-                a.classList.toggle('activate', on);
-                a.setAttribute('aria-current', on ? 'page' : 'false');
-            })
-        }
+        <template id="card-tpl">
+          <article class="card">
+            <a class="thumb" target="_blank" rel="noopener"><img alt=""></a>
+            <div class="meta">
+              <a class="title" target="_blank" rel="noopener"></a>
+              <div class="date"></div>
+              <p class="desc"></p>
+            </div>
+          </article>
+        </template>
+      </div>
+    </section>
 
-        function activateByHash(hash) {
-            if (!hash) return;
-            navLinks.forEach(a => {
-                const on = a.getAttribute('href') === hash;
-                a.classList.toggle('active', on);
-                a.classList.toggle('activate', on);
-            })
-        }
-        let spyTick = 0;
-        addEventListener('scroll', () => {
-            if (spyTick) return; // throttle to animation frame
-            spyTick = requestAnimationFrame(() => {
-                spy();
-                spyTick = 0;
-            });
-        }, {
-            passive: true
-        });
-        addEventListener('hashchange', () => activateByHash(location.hash));
-        navLinks.forEach(a => a.addEventListener('click', (e) => {
-            const href = a.getAttribute('href');
-            if (href && href.startsWith('#')) {
-                e.preventDefault();
-                document.querySelector(href)?.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                activateByHash(href);
-                history.replaceState(null, '', href);
-            }
-        }));
-        spy();
-        activateByHash(location.hash || '#home');
+    <section id="contact" class="section">
+      <div class="title"><div class="ribbon"></div><h2>Contact</h2></div>
+      <p class="lead">Reach me on these platforms — or copy the handle instantly.</p>
+      <div class="contact-grid">
+        <div class="c-card">
+          <div class="row"><div class="icon">📸</div><div><h4>Instagram</h4><p>@_.makufff.js</p></div></div>
+          <div class="c-actions"><a class="btn" href="https://instagram.com/_.makufff.js" target="_blank" rel="noopener">Visit</a><button class="btn small" data-copy="_.makufff.js">Copy</button></div>
+        </div>
+        <div class="c-card">
+          <div class="row"><div class="icon">🐙</div><div><h4>GitHub</h4><p>github.com/Makufff</p></div></div>
+          <div class="c-actions"><a class="btn" href="https://github.com/Makufff" target="_blank" rel="noopener">Visit</a><button class="btn small" data-copy="github.com/Makufff">Copy</button></div>
+        </div>
+        <div class="c-card">
+          <div class="row"><div class="icon">💼</div><div><h4>LinkedIn</h4><p>linkedin.com/in/tanapat-chamted</p></div></div>
+          <div class="c-actions"><a class="btn" href="https://www.linkedin.com/in/tanapat-chamted/" target="_blank" rel="noopener">Visit</a><button class="btn small" data-copy="linkedin.com/in/tanapat-chamted">Copy</button></div>
+        </div>
+        <div class="c-card">
+          <div class="row"><div class="icon">✉️</div><div><h4>Email</h4><p>makufff.tanapat@gmail.com</p></div></div>
+          <div class="c-actions"><a class="btn" href="mailto:makufff.tanapat@gmail.com">Compose</a><button class="btn small" data-copy="makufff.tanapat@gmail.com">Copy</button></div>
+        </div>
+      </div>
+    </section>
 
-        const sparkles = $('#sparkles'),
-            icons = ['✨', '💙', '💖', '🌸', '⭐']
+    <div class="footer small">© 2025 Makufff - All Rights Reserved.</div>
+  </main>
 
-        function addSpark() {
-            const s = document.createElement('span');
-            s.textContent = icons[Math.random() * icons.length | 0];
-            s.style.left = (Math.random() * 92 + 4) + '%';
-            s.style.bottom = '-10px';
-            s.style.animationDuration = (6 + Math.random() * 6) + 's';
-            sparkles?.appendChild(s);
-            setTimeout(() => s.remove(), 12000)
-        }
-        for (let i = 0; i < 18; i++) setTimeout(addSpark, i * 300);
-        setInterval(addSpark, 900)
-
-        const stage = $('.stage'),
-            bokehEl = $('#bokeh')
-
-        function spawnBokeh(n = 14) {
-            bokehEl.innerHTML = '';
-            for (let i = 0; i < n; i++) {
-                const s = document.createElement('span');
-                const size = 60 + Math.random() * 120;
-                s.style.width = s.style.height = size + 'px';
-                s.style.left = (Math.random() * 92 + 2) + '%';
-                s.style.bottom = (-20 - Math.random() * 40) + 'px';
-                s.style.setProperty('--dur', (10 + Math.random() * 10) + 's');
-                s.style.filter = 'blur(' + (1 + Math.random() * 2) + 'px)';
-                bokehEl.appendChild(s)
-            }
-        }
-        spawnBokeh();
-
-        const ig = $('.ig'),
-            char = $('.char');
-        let parallaxOn = true;
-        stage.addEventListener('pointermove', e => {
-            if (!parallaxOn) return;
-            const r = stage.getBoundingClientRect();
-            const px = (e.clientX - r.left) / r.width - .5;
-            const py = (e.clientY - r.top) / r.height - .5;
-            ig.style.transform = `translate3d(${px * -18}px,${py * -10}px,0) rotate(${px * 3}deg)`;
-            char.style.transform = `translate3d(${px * 14}px,${py * 10}px,0)`;
-            stage.style.backgroundPosition = `${50 + px * 4}% ${50 + py * 4}%`
-        })
-        stage.addEventListener('pointerleave', () => {
-            ig.style.transform = '';
-            char.style.transform = '';
-            stage.style.backgroundPosition = ''
-        })
-
-        function confetti(x, y) {
-            const n = 24,
-                frag = document.createDocumentFragment();
-            for (let i = 0; i < n; i++) {
-                const d = document.createElement('i');
-                d.className = 'confetti';
-                d.style.left = x + 'px';
-                d.style.top = y + 'px';
-                d.style.setProperty('--dx', (Math.random() * 2 - 1) * 140 + 'px');
-                d.style.setProperty('--dy', (60 + Math.random() * 160) + 'px');
-                d.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
-                d.style.background = (['#60a5fa', '#93c5fd', '#2563eb', '#a5b4fc'])[i % 4];
-                frag.appendChild(d);
-                setTimeout(() => d.remove(), 900)
-            }
-            stage.appendChild(frag)
-        }
-        $('#loveBubble').addEventListener('click', e => {
-            const r = stage.getBoundingClientRect();
-            confetti(e.clientX - r.left, e.clientY - r.top)
-        })
-
-        const likeBtn = $('#likeBtn'),
-            likeCountEl = $('#likeCount'),
-            likesStat = $('#likesStat'),
-            igFrame = $('#igFrame')
-        let likes = Number(localStorage.getItem('likes') || 5000),
-            liked = localStorage.getItem('liked') === '1'
-        const fmt = n => n >= 1e9 ? (n / 1e9).toFixed(1) + 'B' : n >= 1e6 ? (n / 1e6).toFixed(1) + 'M' : n >= 1e3 ? (n / 1e3).toFixed(1) + 'k' : String(n)
-
-        function renderLikes() {
-            likeCountEl.textContent = fmt(likes);
-            likesStat.textContent = fmt(likes);
-            likeBtn.classList.toggle('liked', liked);
-            likeBtn.setAttribute('aria-pressed', liked)
-        }
-        renderLikes()
-
-        function floatHeart(x, y) {
-            const h = document.createElement('div');
-            h.className = 'float-heart';
-            h.style.setProperty('--x', x + 'px');
-            h.style.setProperty('--y', y + 'px');
-            h.textContent = '❤';
-            ig.appendChild(h);
-            setTimeout(() => h.remove(), 900)
-        }
-
-        function toggleLike(e) {
-            const r = ig.getBoundingClientRect();
-            if (!liked) {
-                liked = true;
-                likes += 1;
-                floatHeart(e ? e.clientX - r.left : r.width / 2, e ? e.clientY - r.top : r.height / 2)
-            } else {
-                liked = false;
-                likes = Math.max(0, likes - 1)
-            }
-            localStorage.setItem('likes', likes);
-            localStorage.setItem('liked', liked ? '1' : '0');
-            renderLikes()
-        }
-        likeBtn.addEventListener('click', toggleLike);
-        igFrame.addEventListener('dblclick', toggleLike)
-
-        const comments = $('#comments'),
-            cBtn = $('#commentBtn'),
-            cInput = $('#commentInput'),
-            cList = $('#commentList'),
-            toast = $('#toast')
-
-        function showToast(t) {
-            toast.textContent = t;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 1200)
-        }
-        cBtn.addEventListener('click', () => {
-            comments.classList.toggle('show');
-            if (comments.classList.contains('show')) cInput.focus()
-        })
-        cInput.addEventListener('keydown', e => {
-            if (e.key === 'Enter' && cInput.value.trim()) {
-                const li = document.createElement('li');
-                li.textContent = cInput.value.trim();
-                cList.prepend(li);
-                cInput.value = '';
-                while (cList.children.length > 20) cList.lastChild.remove()
-            }
-        })
-        $('#shareBtn').addEventListener('click', async () => {
-            const url = location.href;
-            try {
-                if (navigator.share) {
-                    await navigator.share({
-                        title: document.title,
-                        url
-                    })
-                } else {
-                    await navigator.clipboard.writeText(url);
-                    showToast('Link copied!')
-                }
-            } catch { }
-        })
-
-        $$('[data-copy]').forEach(btn => btn.addEventListener('click', async () => {
-            try {
-                await navigator.clipboard.writeText(btn.getAttribute('data-copy'));
-                showToast('Copied: ' + btn.getAttribute('data-copy'))
-            } catch { }
-        }))
-
-        const revealEls = document.querySelectorAll('.xp-card,.skills-card,.card-proj,.c-card,.ig,.char')
-        revealEls.forEach(el => {
-            el.style.opacity = 0;
-            el.style.transform = 'translateY(18px)'
-        })
-        const io = new IntersectionObserver(es => {
-            es.forEach(en => {
-                if (en.isIntersecting) {
-                    en.target.style.opacity = 1;
-                    en.target.style.transform = 'none';
-                    en.target.style.transition = 'opacity .6s ease, transform .6s ease';
-                    io.unobserve(en.target)
-                }
-            })
-        }, {
-            threshold: .18
-        })
-        revealEls.forEach(el => io.observe(el))
-
-        // Medium feed moved to inline block above
-    </script>
+  <div class="toast" id="toast">Copied!</div>
+  <script src="../components/scripts/Script.js" defer></script>
 </body>
-
 </html>
