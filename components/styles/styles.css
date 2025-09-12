@@ -599,6 +599,13 @@ body {
     color: transparent
 }
 
+.fact-xl .big.brown {
+    background: linear-gradient(90deg, #9a7657, #4d2d06);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent
+}
+
 .fact-img {
     grid-column: span 4;
     padding: 0;
